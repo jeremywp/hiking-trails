@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TrailsComponent } from './trails/trails.component';
+import {MatFormFieldModule, MatInputModule} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,9 @@ import { TrailsComponent } from './trails/trails.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
