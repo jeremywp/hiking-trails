@@ -15,7 +15,7 @@ export class TrailInfoComponent implements OnInit {
 
   ngOnInit() {
     this.apiGetter.getTrails().subscribe(res => {
-      this.trails = res.data;
+      this.trails = res.trails;
       console.log(this.trails);
     });
   }
