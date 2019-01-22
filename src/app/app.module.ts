@@ -9,9 +9,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { TrailsComponent } from './trails/trails.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatCardModule,
