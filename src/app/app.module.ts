@@ -7,9 +7,13 @@ const firebaseConfig = APIKeys.firebaseConfig;
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MatCardModule, MatSelectModule, MatOptionModule, MatButtonModule, MatInputModule } from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,14 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatInputModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
