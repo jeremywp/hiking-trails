@@ -7,14 +7,21 @@ const firebaseConfig = APIKeys.firebaseConfig;
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MatCardModule, MatSelectModule, MatOptionModule, MatButtonModule, MatInputModule } from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { TrailsComponent } from './trails/trails.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 
+=======
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+>>>>>>> eba02098afa7c7e6d8c551d6011885ab97be36ec
 
 @NgModule({
   declarations: [
@@ -28,14 +35,16 @@ import {FormsModule} from "@angular/forms";
     AngularFireAuthModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    AppRoutingModule,
+    MatFormFieldModule,
     AppRoutingModule,
     MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
     MatButtonModule,
-    AppRoutingModule,
-    FormsModule
+    MatInputModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
