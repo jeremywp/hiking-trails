@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrailsComponent } from './trails/trails.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
