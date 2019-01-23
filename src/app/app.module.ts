@@ -12,12 +12,21 @@ import { MatCardModule, MatSelectModule, MatOptionModule, MatButtonModule, MatIn
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
+import { TrailsComponent } from './trails/trails.component';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FormsModule} from "@angular/forms";
+
+=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+>>>>>>> eba02098afa7c7e6d8c551d6011885ab97be36ec
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TrailsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +35,9 @@ import { FormsModule } from '@angular/forms';
     AngularFireAuthModule,
     AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
+    MatFormFieldModule,
+    AppRoutingModule,
     MatCardModule,
     MatSelectModule,
     MatOptionModule,
