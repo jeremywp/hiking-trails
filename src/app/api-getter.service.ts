@@ -13,4 +13,8 @@ export class ApiGetterService {
     return this.http.get(this.trailsUrl);
   }
 
+  getWeather(lat, long) {
+    return this.http.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat +'&lon=' + long + '&APPID=6f77fc88f2a4d32867a25f4d67f3ac3c');
+  }
+
 }
