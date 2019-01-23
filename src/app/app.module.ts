@@ -13,13 +13,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TrailInfoComponent } from './trail-info/trail-info.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TrailsComponent } from './trails/trails.component';
+import { MatFormFieldModule } from "@angular/material";
+import { TrailsByIdComponent } from './trails-by-id/trails-by-id.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrailInfoComponent
+    TrailInfoComponent,
+    TrailsComponent,
+    TrailsByIdComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,9 @@ import { FormsModule } from '@angular/forms';
     AngularFireAuthModule,
     AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
+    MatFormFieldModule,
+    AppRoutingModule,
     MatCardModule,
     MatSelectModule,
     MatOptionModule,
