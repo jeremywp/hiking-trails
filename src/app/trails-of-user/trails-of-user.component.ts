@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrailsOfUserComponent implements OnInit {
 
+  users;
+
   constructor() { }
 
   ngOnInit() {
