@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TrailsComponent} from "../trails/trails.component";
 
 @Component({
   selector: 'app-trails-by-id',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrailsByIdComponent implements OnInit {
 
-  constructor() { }
+  trailsList: any;
+
+  constructor(trailsComponent: TrailsComponent) { }
 
   ngOnInit() {
+    this.getTrailsList();
+  }
+
+  getTrailsList() {
+
   }
 
 }

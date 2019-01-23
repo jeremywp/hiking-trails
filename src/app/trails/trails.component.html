@@ -3,7 +3,7 @@
     <mat-form-field >
       <input matInput placeholder="Zip Code" [(ngModel)]="zipCode">
     </mat-form-field>
-    <button mat-raised-button color="accent" (click)="getTrails();">Search
+    <button mat-raised-button color="accent" (click)="getTrails()" [routerLink]="['/trails']">Search
       Trails</button>
   </mat-card-content>
 </mat-card>

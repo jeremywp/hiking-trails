@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [TrailsByIdComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
