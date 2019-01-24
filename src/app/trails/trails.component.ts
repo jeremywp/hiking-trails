@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {PasserService} from "../passer.service";
 
 @Component({
   selector: 'app-trails',
@@ -9,11 +10,12 @@ import {HttpClient} from "@angular/common/http";
 export class TrailsComponent implements OnInit {
   zipCode: number;
   latLong: any;
-  private hikingUrl: string;
+  public hikingUrl: string;
   private mapQuestUrl: string;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private passer: PasserService) {
   }
 
   ngOnInit() {
@@ -21,7 +23,6 @@ export class TrailsComponent implements OnInit {
 
   updateMapUrl () {
     this.mapQuestUrl = 'http://open.mapquestapi.com/geocoding/v1/address?key=z09V87z5rXEly0yFADXnEMWFbNvH3Bsd&location=' + this.zipCode;
-    console.log(this.mapQuestUrl);
     this.getLngAndLat();
   }
 
@@ -33,17 +34,17 @@ export class TrailsComponent implements OnInit {
      this.getLocationData().subscribe(data => {
        // @ts-ignore
        this.latLong = data.results[0].locations[0].latLng;
-       console.log(this.latLong);
        this.updateHikingUrl();
-       console.log(this.hikingUrl)
      });
 
 
   }
 
-  updateHikingUrl () {
-    this.hikingUrl = 'https://www.hikingproject.com/data/get-trails?lat=' + this.latLong.lat + '&lon=' + this.latLong.lng + '&maxDistance=10&key=200411541-4117e4688ccd63ae5e065df8c7c54b2a'
+  async updateHikingUrl () {
+    await (this.hikingUrl = 'https://www.hikingproject.com/data/get-trails?lat=' + this.latLong.lat + '&lon=' + this.latLong.lng + '&maxDistance=10&key=200411541-4117e4688ccd63ae5e065df8c7c54b2a');
+    this.passer.setHikingUrl(this.hikingUrl);
   }
+
 
 getTrails() {
     this.updateMapUrl();

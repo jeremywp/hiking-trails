@@ -43,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     FormsModule,
     MatCheckboxModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
   providers: [TrailsByIdComponent],
   bootstrap: [AppComponent]
