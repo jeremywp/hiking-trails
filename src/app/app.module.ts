@@ -7,21 +7,45 @@ const firebaseConfig = APIKeys.firebaseConfig;
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MatCardModule, MatSelectModule, MatOptionModule, MatButtonModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
+import { TrailInfoComponent } from './trail-info/trail-info.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TrailsComponent } from './trails/trails.component';
+import { MatFormFieldModule } from '@angular/material';
+import { TrailsByIdComponent } from './trails-by-id/trails-by-id.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginpageComponent
+    LoginpageComponent,
+    TrailInfoComponent,
+    TrailsComponent,
+    TrailsByIdComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MatFormFieldModule,
+    AppRoutingModule,
+    MatCardModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatInputModule,
+    FormsModule,
+    MatCheckboxModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

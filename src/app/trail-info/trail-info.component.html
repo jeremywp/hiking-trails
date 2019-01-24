@@ -1,0 +1,14 @@
+<mat-card *ngIf="trails != undefined">
+    <mat-card-title>{{trails[trailIndex].name}}</mat-card-title>
+    <mat-card-subtitle>{{trails[trailIndex].stars}}/5 by {{trails[trailIndex].starVotes}} people</mat-card-subtitle>
+    <img mat-card-image [src]="trails[trailIndex].imgMedium"/>
+    <mat-card-subtitle>Difficulty: {{turnToWords(trails[trailIndex].difficulty)}}</mat-card-subtitle>
+    <mat-checkbox>Completed</mat-checkbox>
+    <mat-checkbox>Interested</mat-checkbox>
+    <div class="weather">
+        <mat-card-subtitle *ngFor="let day of weather">
+            <img mat-card-image class="weather-icon" [src]="'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'"/>
+            {{day.weather[0].description}}
+        </mat-card-subtitle>
+    </div>
+</mat-card>
