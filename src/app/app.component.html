@@ -1,6 +1,25 @@
 
+<mat-toolbar>
+  <span>Hiking Trails</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  
+  <div class="loginInfo" *ngIf="user.displayName | async as displayName; else login">
+    {{displayName}}
+    <button mat-raised-button (click)="user.signOut()">Logout</button>
+  </div>
+
+
+
+  <ng-template #login>
+    <button mat-raised-button (click)="user.signIn()">Login</button>
+  </ng-template>
+</mat-toolbar>
+
 <app-trail-info></app-trail-info>
 
-<router-outlet></router-outlet>
+
 
 
