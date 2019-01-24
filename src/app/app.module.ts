@@ -50,7 +50,7 @@ import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component
     BrowserAnimationsModule,
 
   ],
-  providers: [TrailsByIdComponent],
+  providers: [TrailsComponent, TrailsByIdComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
