@@ -14,7 +14,7 @@ export class ApiGetterService {
   }
 
   getWeather(lat, long) {
-    return this.http.get('http://api.openweathermap.org/data/2.5/forecast/daily?q=London,uk&APPID=6f77fc88f2a4d32867a25f4d67f3ac3c');
+    return this.http.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${long}&cnt=9a5f463a816f2fd827772c65f14241dc`);
   }
 
 }
