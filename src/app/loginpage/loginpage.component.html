@@ -1,5 +1,5 @@
 <div *ngIf="user.displayName | async as displayName; else login">
-  The user is logged in.  {{displayName}}
+    {{displayName}}
 
  
 <div><button (click)="user.signOut()">Logout</button></div>
@@ -8,5 +8,5 @@
 
 
 <ng-template #login>
-  You need to login: <button (click)="user.signIn()">Login</button>
+<button (click)="user.signIn()">Login</button>
 </ng-template>

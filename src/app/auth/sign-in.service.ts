@@ -1,7 +1,7 @@
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 import { Injectable } from '@angular/core';
-import { of as observableOf } from 'rxjs';
+
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -29,7 +29,6 @@ export class SignInService {
       }
     }) 
   );
-  
 
   constructor(public afAuth: AngularFireAuth) { }
 

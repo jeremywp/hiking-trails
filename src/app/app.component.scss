@@ -1,0 +1,19 @@
+mat-toolbar{
+    background-color: gray;
+}
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+  .loginInfo{
+      display: flex;
+      
+  }
+
+  button{
+      margin-left: 10px;
+      background-color: rgb(149, 147, 147)
+  }
