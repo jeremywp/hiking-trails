@@ -14,6 +14,7 @@ export class TrailsComponent implements OnInit {
   public hikingUrl: string;
   private mapQuestUrl: string;
   show: boolean = true;
+  trails;
 
 
   constructor(private httpClient: HttpClient) {
