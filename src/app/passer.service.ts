@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class PasserService {
 
   lonLat;
+  hikingUrl;
+  trails;
 
   constructor() { }
 
@@ -15,6 +17,22 @@ export class PasserService {
 
   getLonLat() {
     return this.lonLat;
+  }
+
+  setHikingUrl (url) {
+    this.hikingUrl = url;
+  }
+
+  getHikingUrl () {
+    return this.hikingUrl;
+  }
+
+  setTrails (trails) {
+    this.trails = trails;
+  }
+
+  getTrails () {
+    return this.trails;
   }
   
 }

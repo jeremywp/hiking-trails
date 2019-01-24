@@ -9,7 +9,6 @@ const routes: Routes = [
     path: 'trails',
     component: TrailsComponent
   },
-
   { path: '', redirectTo: 'app-loginpage', pathMatch: 'full' },
   { path: '**', redirectTo: 'app-loginpage', pathMatch: 'full' }
 ];

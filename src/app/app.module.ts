@@ -47,9 +47,10 @@ import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component
     MatInputModule,
     FormsModule,
     MatCheckboxModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
-  providers: [],
+  providers: [TrailsComponent, TrailsByIdComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

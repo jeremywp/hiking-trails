@@ -11,7 +11,7 @@ export class TrailInfoComponent implements OnInit {
   trailIndex = 5;
   trails;
   weather;
-  days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday', 'Sunday']
+  days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday', 'Sunday'];
 
   constructor(private apiGetter: ApiGetterService) { }
 
