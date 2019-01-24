@@ -11,10 +11,11 @@ import { MatCardModule, MatSelectModule, MatOptionModule, MatButtonModule, MatIn
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 import { TrailInfoComponent } from './trail-info/trail-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TrailsComponent } from './trails/trails.component';
-import { MatFormFieldModule } from "@angular/material";
+import { MatFormFieldModule } from '@angular/material';
 import { TrailsByIdComponent } from './trails-by-id/trails-by-id.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component
 @NgModule({
   declarations: [
     AppComponent,
+    LoginpageComponent,
     TrailInfoComponent,
     TrailsComponent,
     TrailsByIdComponent,
