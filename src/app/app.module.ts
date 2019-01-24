@@ -9,10 +9,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginpageComponent
   ],
   imports: [
     BrowserModule,
