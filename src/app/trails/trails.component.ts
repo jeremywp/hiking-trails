@@ -14,7 +14,6 @@ export class TrailsComponent implements OnInit {
   public hikingUrl: string;
   private mapQuestUrl: string;
   show: boolean = true;
-  trails;
 
 
   constructor(private httpClient: HttpClient) {
@@ -55,6 +54,7 @@ export class TrailsComponent implements OnInit {
   getTrailsData() {
     this.getTrailsList().subscribe(data => {
       this.trailsList = data;
+      this.trailsList = this.trailsList.trails;
       console.log(this.trailsList);
     });
   }
@@ -64,7 +64,7 @@ export class TrailsComponent implements OnInit {
   }
 
   showTrails() {
-    console.log()
+    console.log(this.trailsList.trails)
   }
 
 }
