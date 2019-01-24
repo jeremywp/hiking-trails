@@ -14,7 +14,7 @@ export class ApiGetterService {
   }
 
   getWeather(lat, long) {
-    return this.http.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${long}&cnt=810e3f85922b175841b0f7afdc1a2bbb`);
+    return this.http.get(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${long}&cnt=5&APPID=810e3f85922b175841b0f7afdc1a2bbb`);
   }
 
 }
