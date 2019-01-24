@@ -32,8 +32,10 @@ export class TrailsComponent implements OnInit {
 
    getLngAndLat () {
      this.getLocationData().subscribe(data => {
-       // @ts-ignore
-       this.latLong = data.results[0].locations[0].latLng;
+
+       this.latLong = data;
+       this.latLong = this.latLong.results[0].locations[0].latLng;
+       console.log(this.latLong);
        this.updateHikingUrl();
      });
 
