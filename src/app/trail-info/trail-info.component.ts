@@ -8,10 +8,10 @@ import { ApiGetterService } from '../api-getter.service';
 })
 export class TrailInfoComponent implements OnInit {
 
-  trailIndex = 0;
+  trailIndex = 5;
   trails;
   weather;
-  days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday', 'Sunday']
+  days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday', 'Sunday'];
 
   constructor(private apiGetter: ApiGetterService) { }
 
@@ -21,7 +21,7 @@ export class TrailInfoComponent implements OnInit {
       console.log(this.trails);
       this.apiGetter.getWeather(this.trails[this.trailIndex].latitude, this.trails[this.trailIndex].longitude).subscribe(res => {
         this.weather = res;
-        this.weather.list.slice(0,5);
+        this.weather = this.weather.list;
         console.log(this.weather);
       })
     });

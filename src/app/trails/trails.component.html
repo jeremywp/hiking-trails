@@ -3,7 +3,22 @@
     <mat-form-field >
       <input matInput placeholder="Zip Code" [(ngModel)]="zipCode">
     </mat-form-field>
-    <button mat-raised-button color="accent" (click)="getTrails();">Search
+    <button mat-raised-button color="accent" (click)="getTrails(); show = !show">Search
       Trails</button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="!show">
+  <mat-card-content *ngFor="let trail of trailsList">
+    <div>
+      <img src="{{ trail.imgSmall }}">
+    </div>
+    <div>
+    {{ trail.name }}
+    {{ trail.difficulty }}
+    {{ trail.length }} mi
+    {{ trail.location }}
+    {{ trail.stars }} stars
+    </div>
   </mat-card-content>
 </mat-card>
