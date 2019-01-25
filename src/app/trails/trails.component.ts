@@ -9,14 +9,15 @@ import {PasserService} from "../passer.service";
 })
 export class TrailsComponent implements OnInit {
   zipCode: number;
-  latLong: any;
+  latLon: any;
   trailsList: any;
   public hikingUrl: string;
   private mapQuestUrl: string;
   show: boolean = true;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private passer: PasserService) {
   }
 
   ngOnInit() {
@@ -35,16 +36,17 @@ export class TrailsComponent implements OnInit {
    getLngAndLat () {
      this.getLocationData().subscribe(data => {
 
-       this.latLong = data;
-       this.latLong = this.latLong.results[0].locations[0].latLng;
-       console.log(this.latLong);
+       this.latLon = data;
+       this.latLon = this.latLon.results[0].locations[0].latLng;
+       console.log(this.latLon);
        this.updateHikingUrl();
      });
     }
 
   updateHikingUrl () {
-    this.hikingUrl = 'https://www.hikingproject.com/data/get-trails?lat=' + this.latLong.lat + '&lon=' + this.latLong.lng + '&maxDistance=10&key=200411541-4117e4688ccd63ae5e065df8c7c54b2a';
+    this.hikingUrl = 'https://www.hikingproject.com/data/get-trails?lat=' + this.latLon.lat + '&lon=' + this.latLon.lng + '&maxDistance=10&key=200411541-4117e4688ccd63ae5e065df8c7c54b2a';
     this.getTrailsData();
+    this.passer.setLonLat(this.latLon);
   }
 
   getTrailsList() {
@@ -56,15 +58,12 @@ export class TrailsComponent implements OnInit {
       this.trailsList = data;
       this.trailsList = this.trailsList.trails;
       console.log(this.trailsList);
+      this.passer.setTrails(this.trailsList);
     });
   }
 
   getTrails() {
       this.updateMapUrl();
-  }
-
-  showTrails() {
-    console.log(this.trailsList.trails)
   }
 
 }
