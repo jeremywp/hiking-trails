@@ -8,10 +8,11 @@ import { ApiGetterService } from '../api-getter.service';
 })
 export class TrailInfoComponent implements OnInit {
 
-  trailIndex = 5;
+  trailIndex = 3;
   trails;
-  weather;
-  days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday', 'Sunday'];
+  weathers;
+  weatherDates = [];
+  weatherData = [];
 
   constructor(private apiGetter: ApiGetterService) { }
 
@@ -20,12 +21,27 @@ export class TrailInfoComponent implements OnInit {
       this.trails = res.trails;
       console.log(this.trails);
       this.apiGetter.getWeather(this.trails[this.trailIndex].latitude, this.trails[this.trailIndex].longitude).subscribe(res => {
-        this.weather = res;
-        this.weather = this.weather.list;
-        console.log(this.weather);
+        this.weathers = res;
+        this.weathers = this.weathers.list;
+        this.filterWeather();
       })
     });
-    
+  }
+
+  filterWeather() {
+    let dateMatch = false;
+    for(let i = 0; i < this.weathers.length; i++) {
+      for(let d = 0; d < this.weatherDates.length; d++) {
+        if(this.weathers[i].dt_txt.slice(0,10) == this.weatherDates[d]) {
+          dateMatch = true;
+        }
+      }
+      if(!dateMatch) {
+        this.weatherDates.push(this.weathers[i].dt_txt.slice(0,10));
+        this.weatherData.push(this.weathers[i].weather[0]);
+      }
+      dateMatch = false;
+    }
   }
 
   turnToWords(string) {
