@@ -7,11 +7,17 @@ const firebaseConfig = APIKeys.firebaseConfig;
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { MatCardModule, MatSelectModule, MatOptionModule, MatButtonModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+import { MatCardModule,
+         MatSelectModule,
+         MatOptionModule,
+         MatButtonModule,
+         MatInputModule, 
+         MatCheckboxModule,
+         MatToolbarModule 
+        } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginpageComponent } from './loginpage/loginpage.component';
 import { TrailInfoComponent } from './trail-info/trail-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TrailsComponent } from './trails/trails.component';
@@ -23,7 +29,6 @@ import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component
 @NgModule({
   declarations: [
     AppComponent,
-    LoginpageComponent,
     TrailInfoComponent,
     TrailsComponent,
     TrailsOfUserComponent
@@ -43,6 +48,7 @@ import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component
     MatOptionModule,
     MatButtonModule,
     MatInputModule,
+    MatToolbarModule,
     FormsModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
