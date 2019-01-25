@@ -11,4 +11,6 @@ export class DataService {
   constructor(private db: AngularFirestore) {
     this.users = db.collection<any>('users');
   }
+
+  loadUsersUid()
 }
