@@ -18,7 +18,6 @@ import { MatCardModule,
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginpageComponent } from './loginpage/loginpage.component';
 import { TrailInfoComponent } from './trail-info/trail-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TrailsComponent } from './trails/trails.component';
@@ -30,7 +29,6 @@ import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component
 @NgModule({
   declarations: [
     AppComponent,
-    LoginpageComponent,
     TrailInfoComponent,
     TrailsComponent,
     TrailsOfUserComponent

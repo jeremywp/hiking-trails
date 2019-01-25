@@ -9,11 +9,11 @@
                         <mat-checkbox>Interested</mat-checkbox>
                     </div>
                     <div class="right">
-                        <mat-card-subtitle class="weather-title">Next 5 Days Forecast</mat-card-subtitle>
+                        <mat-card-subtitle class="weather-title">Next 6 Days Forecast</mat-card-subtitle>
                         <div class="weather">
-                            <mat-card-subtitle class="day" *ngFor="let day of weather">
-                                <img mat-card-image class="weather-icon" [src]="'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'" />
-                                <span>{{day.weather[0].description}}</span>
+                            <mat-card-subtitle class="day" *ngFor="let day of weatherData">
+                                <img mat-card-image class="weather-icon" [src]="'http://openweathermap.org/img/w/' + day.icon + '.png'" />
+                                <span>{{day.description}}</span>
                             </mat-card-subtitle>
                         </div>
                     </div>
