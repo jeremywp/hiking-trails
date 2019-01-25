@@ -6,19 +6,28 @@
     <button mat-raised-button color="accent" (click)="getTrails(); show = !show">Search
       Trails</button>
   </mat-card-content>
-</mat-card>
-
-<mat-card *ngIf="!show">
-  <mat-card-content *ngFor="let trail of trailsList">
-    <div>
-      <img src="{{ trail.imgSmall }}">
-    </div>
-    <div>
-    {{ trail.name }}
-    {{ trail.difficulty }}
-    {{ trail.length }} mi
-    {{ trail.location }}
-    {{ trail.stars }} stars
-    </div>
+  <mat-card-content *ngIf="!show" >
+    <a [href]="">
+      <div class="trail-detail-card" *ngFor="let trail of trailsList">
+        <div class="img-container">
+          <img class='center' src="{{ trail.imgSmallMed }}">
+        </div>
+        <div class="card-text">
+          <div class="title-row">
+            <span>
+              <img class="difficulty" [src]="'https://cdn.apstatic.com/img/diff/' + trail.difficulty + '.svg'">
+              {{ trail.name }}
+            </span>
+            <span>{{ trail.length }} mi</span>
+          </div>
+          <div class="sub-row">
+            <span>{{ trail.stars }} stars {{ trail.starVotes }} </span>
+            <span>{{ trail.location }}</span>
+          </div>
+        </div>
+      </div>
+    </a>
   </mat-card-content>
 </mat-card>
+
+

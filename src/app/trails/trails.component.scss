@@ -1,0 +1,43 @@
+.trail-detail-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-container {
+  position: relative;
+  overflow: hidden;
+  height: 210px;
+  width: 250px;
+}
+
+.center {
+  position: absolute;
+  width: auto;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.card-text {
+  padding: 5px;
+}
+
+.difficulty {
+  margin-right: 5px;
+  height: 16px;
+}
+
+.title-row {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-row {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+}
