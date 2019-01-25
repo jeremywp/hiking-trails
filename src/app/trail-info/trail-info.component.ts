@@ -19,7 +19,6 @@ export class TrailInfoComponent implements OnInit {
   ngOnInit() {
     this.apiGetter.getTrails().subscribe(res => {
       this.trails = res.trails;
-      console.log(this.trails);
       this.apiGetter.getWeather(this.trails[this.trailIndex].latitude, this.trails[this.trailIndex].longitude).subscribe(res => {
         this.weathers = res;
         this.weathers = this.weathers.list;
