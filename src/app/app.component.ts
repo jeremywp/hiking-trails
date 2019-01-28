@@ -7,6 +7,7 @@ import { SignInService } from './auth/sign-in.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(public auth: SignInService) { }
   title = 'Hiking Trails';
-  constructor(public user: SignInService) { }
+  
 }

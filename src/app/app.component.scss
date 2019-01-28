@@ -1,5 +1,6 @@
 mat-toolbar{
     background-color: gray;
+    
 }
 
 .example-fill-remaining-space {
@@ -10,10 +11,13 @@ mat-toolbar{
 
   .loginInfo{
       display: flex;
-      
   }
 
-  button{
-      margin-left: 10px;
+ button{
+      margin-left: 20px;
       background-color: rgb(149, 147, 147)
   }
+
+  .avatar{
+      margin-left: 10px;
+ }
