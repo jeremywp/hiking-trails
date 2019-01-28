@@ -73,8 +73,22 @@ a {
   display: flex;
   justify-content: space-between;
   margin-left: 5px;
+  align-items: center;
+}
+
+.star-score {
+  justify-content: center;
+  align-items: center;
+}
+
+.star-score img {
+  width: 16px;
 }
 
 .location {
   margin-right: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-items: center;
 }

@@ -23,9 +23,20 @@
               </div>
               <div class="sub-row">
                 <span class="star-score">
-                  <img src="https://cdn.apstatic.com/img/stars/starRed.svg" *ngFor="let star of trail.star">
-                  &nbsp;
-                  {{ trail.starVotes }} </span>
+                  <span *ngIf="trail.stars >=1"><img src="../../assets/icons/baseline-star-24px.svg"></span>
+                  <span *ngIf="trail.stars >=2"><img src="../../assets/icons/baseline-star-24px.svg"></span>
+                  <span *ngIf="trail.stars >=3"><img src="../../assets/icons/baseline-star-24px.svg"></span>
+                  <span *ngIf="trail.stars >=4"><img src="../../assets/icons/baseline-star-24px.svg"></span>
+                  <span *ngIf="trail.stars >=5"><img src="../../assets/icons/baseline-star-24px.svg"></span>
+                  <span *ngIf="trail.stars %1!=0"><img src="../../assets/icons/baseline-star_half-24px.svg"></span>
+                  <span *ngIf="trail.stars ==0"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
+                  <span *ngIf="trail.stars <=1"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
+                  <span *ngIf="trail.stars <=2"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
+                  <span *ngIf="trail.stars <=3"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
+                  <span *ngIf="trail.stars <=4"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
+                  <span class="votes"> {{ trail.starVotes }}</span>
+                </span>
+
                 <span class="location">{{ trail.location }}</span>
               </div>
             </div>
