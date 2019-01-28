@@ -1,6 +1,15 @@
+a {
+  color: black;
+  text-decoration: inherit;
+}
+
 .trail-detail-card {
   display: flex;
   flex-direction: column;
+  width: 250px;
+  background-color: #dadfea;
+  border: solid #0A1A27 1px;
+  margin-bottom: 30px;
 }
 
 .img-container {
@@ -12,8 +21,9 @@
 
 .center {
   position: absolute;
-  width: auto;
+  width: 250px;
   height: 100%;
+  overflow: hidden;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
@@ -22,7 +32,15 @@
 }
 
 .card-text {
-  padding: 5px;
+  margin: 7px 5px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .difficulty {
@@ -31,13 +49,32 @@
 }
 
 .title-row {
-  width: 240px;
+  width: calc(100% - 10px);
   display: flex;
   justify-content: space-between;
+  margin: 5px;
+  text-align: center;
+}
+
+.trail-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.length {
+  padding: 0 5px;
+  white-space: nowrap;
 }
 
 .sub-row {
-  width: 240px;
+  width: calc(100% - 10px);
   display: flex;
   justify-content: space-between;
+  margin-left: 5px;
+}
+
+.location {
+  margin-right: 5px;
 }

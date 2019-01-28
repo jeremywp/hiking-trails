@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component
     FormsModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
+    FlexLayoutModule
 
   ],
   providers: [TrailsComponent],

@@ -3,30 +3,35 @@
     <mat-form-field >
       <input matInput placeholder="Zip Code" [(ngModel)]="zipCode">
     </mat-form-field>
-    <button mat-raised-button color="accent" (click)="getTrails(); show = !show">Search
+    <button mat-raised-button color="accent" (click)="getTrails()">Search
       Trails</button>
   </mat-card-content>
-  <mat-card-content *ngIf="!show" >
-    <a [href]="">
+  <mat-card-content *ngIf="zipCode != undefined">
+    <div fxLayout="row wrap" fxLayoutGap="30px">
       <div class="trail-detail-card" *ngFor="let trail of trailsList">
-        <div class="img-container">
-          <img class='center' src="{{ trail.imgSmallMed }}">
-        </div>
-        <div class="card-text">
-          <div class="title-row">
-            <span>
-              <img class="difficulty" [src]="'https://cdn.apstatic.com/img/diff/' + trail.difficulty + '.svg'">
-              {{ trail.name }}
-            </span>
-            <span>{{ trail.length }} mi</span>
-          </div>
-          <div class="sub-row">
-            <span>{{ trail.stars }} stars {{ trail.starVotes }} </span>
-            <span>{{ trail.location }}</span>
-          </div>
+          <a href="">
+            <div class="img-container">
+              <img class='center' src="{{ trail.imgSmallMed }}">
+            </div>
+            <div class="card-text">
+              <div class="title-row ">
+                <span class="wrapper">
+                  <img class="difficulty" [src]="'https://cdn.apstatic.com/img/diff/' + trail.difficulty + '.svg'">
+                  <strong class="trail-name">{{ trail.name }}</strong>
+                </span>
+                <div class="length">{{ trail.length }} mi</div>
+              </div>
+              <div class="sub-row">
+                <span class="star-score">
+                  <img src="https://cdn.apstatic.com/img/stars/starRed.svg" *ngFor="let star of trail.star">
+                  &nbsp;
+                  {{ trail.starVotes }} </span>
+                <span class="location">{{ trail.location }}</span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-    </a>
   </mat-card-content>
 </mat-card>
 
