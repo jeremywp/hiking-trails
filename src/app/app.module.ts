@@ -27,6 +27,8 @@ import { FormsModule } from '@angular/forms';
 import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component';
 import { AuthModule } from './auth/auth.module';
 
+import * as firebase from 'firebase';
+
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    //firebase.firestore().settings({timestampsinSnapshots: true}),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
