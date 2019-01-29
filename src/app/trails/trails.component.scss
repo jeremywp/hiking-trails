@@ -1,9 +1,8 @@
-a {
-  color: black;
-  text-decoration: inherit;
-}
+
 
 .trail-detail-card {
+  color: black;
+  text-decoration: inherit;
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -12,11 +11,17 @@ a {
   margin-bottom: 30px;
 }
 
+.trail-detail-card:hover {
+  cursor: pointer;
+}
+
 .img-container {
   position: relative;
   overflow: hidden;
   height: 210px;
   width: 250px;
+  padding: auto 0;
+  margin: auto 0;
 }
 
 .center {
@@ -29,6 +34,8 @@ a {
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
+  padding: auto 0;
+  margin: auto 0;
 }
 
 .card-text {
@@ -64,7 +71,6 @@ a {
 }
 
 .length {
-  padding: 0 5px;
   white-space: nowrap;
 }
 
@@ -77,18 +83,23 @@ a {
 }
 
 .star-score {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
+  margin-right: 5px;
 }
 
 .star-score img {
   width: 16px;
+
 }
 
 .location {
-  margin-right: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   align-items: center;
+  margin-left: 2px;
 }

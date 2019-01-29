@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {PasserService} from "../passer.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-trails',
@@ -13,10 +14,12 @@ export class TrailsComponent implements OnInit {
   trailsList: any;
   public hikingUrl: string;
   private mapQuestUrl: string;
+  selectedTrail: number;
 
 
   constructor(private httpClient: HttpClient,
-              private passer: PasserService) {
+              private passer: PasserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -43,7 +46,7 @@ export class TrailsComponent implements OnInit {
     }
 
   updateHikingUrl () {
-    this.hikingUrl = 'https://www.hikingproject.com/data/get-trails?lat=' + this.latLon.lat + '&lon=' + this.latLon.lng + '&maxDistance=10&key=200411541-4117e4688ccd63ae5e065df8c7c54b2a';
+    this.hikingUrl = 'https://www.hikingproject.com/data/get-trails?lat=' + this.latLon.lat + '&lon=' + this.latLon.lng + '&maxDistance=25&key=200411541-4117e4688ccd63ae5e065df8c7c54b2a';
     this.getTrailsData();
     this.passer.setLonLat(this.latLon);
   }
@@ -65,4 +68,7 @@ export class TrailsComponent implements OnInit {
       this.updateMapUrl();
   }
 
+  getTrailIndex(i) {
+    this.passer.setTrailIndex(i);
+  }
 }

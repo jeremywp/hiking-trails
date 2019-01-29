@@ -8,8 +8,8 @@
   </mat-card-content>
   <mat-card-content *ngIf="zipCode != undefined">
     <div fxLayout="row wrap" fxLayoutGap="30px">
-      <div class="trail-detail-card" *ngFor="let trail of trailsList">
-          <a href="">
+      <div class="trail-detail-card" *ngFor="let trail of trailsList; let i = index" [id]="trail.id"
+           (click)="getTrailIndex(i)" routerLink="/trail-info">
             <div class="img-container">
               <img class='center' src="{{ trail.imgSmallMed }}">
             </div>
@@ -22,27 +22,27 @@
                 <div class="length">{{ trail.length }} mi</div>
               </div>
               <div class="sub-row">
-                <span class="star-score">
+                <div class="star-score">
                   <span *ngIf="trail.stars >=1"><img src="../../assets/icons/baseline-star-24px.svg"></span>
                   <span *ngIf="trail.stars >=2"><img src="../../assets/icons/baseline-star-24px.svg"></span>
                   <span *ngIf="trail.stars >=3"><img src="../../assets/icons/baseline-star-24px.svg"></span>
                   <span *ngIf="trail.stars >=4"><img src="../../assets/icons/baseline-star-24px.svg"></span>
                   <span *ngIf="trail.stars >=5"><img src="../../assets/icons/baseline-star-24px.svg"></span>
-                  <span *ngIf="trail.stars %1!=0"><img src="../../assets/icons/baseline-star_half-24px.svg"></span>
+                  <span *ngIf="trail.stars %1>=0.5"><img src="../../assets/icons/baseline-star_half-24px.svg"></span>
+                  <span *ngIf="trail.stars %1<0.5 && trail.stars%1!=0"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
                   <span *ngIf="trail.stars ==0"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
                   <span *ngIf="trail.stars <=1"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
                   <span *ngIf="trail.stars <=2"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
                   <span *ngIf="trail.stars <=3"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
                   <span *ngIf="trail.stars <=4"><img src="../../assets/icons/baseline-star_border-24px.svg"></span>
-                  <span class="votes"> {{ trail.starVotes }}</span>
-                </span>
+                  <div class="votes"> {{ trail.starVotes }}</div>
+                </div>
 
-                <span class="location">{{ trail.location }}</span>
+                <div class="location"> {{ trail.location }}</div>
               </div>
             </div>
-          </a>
         </div>
-      </div>
+    </div>
   </mat-card-content>
 </mat-card>
 
