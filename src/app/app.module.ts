@@ -26,10 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component';
 import { AuthModule } from './auth/auth.module';
-
 import * as firebase from 'firebase';
-
-
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -58,7 +56,7 @@ import * as firebase from 'firebase';
     FormsModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
- 
+    FlexLayoutModule,
 
   ],
   providers: [TrailsComponent],
