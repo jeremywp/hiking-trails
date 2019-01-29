@@ -7,6 +7,7 @@ export class PasserService {
 
   lonLat;
   trails;
+  trailIndex;
 
   constructor() { }
 
@@ -24,6 +25,14 @@ export class PasserService {
 
   getTrails () {
     return this.trails;
+  }
+
+  setTrailIndex(i) {
+    this.trailIndex = i;
+  }
+
+  getTrailIndex() {
+    return this.trailIndex;
   }
   
 }
