@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiGetterService } from '../api-getter.service';
+import {TrailsComponent} from "../trails/trails.component";
+import {PasserService} from "../passer.service";
 
 @Component({
   selector: 'app-trail-info',
@@ -8,17 +10,21 @@ import { ApiGetterService } from '../api-getter.service';
 })
 export class TrailInfoComponent implements OnInit {
 
-  trailIndex = 3;
+  trailIndex:number;
   trails;
   weathers;
   weatherDates = [];
   weatherData = [];
 
-  constructor(private apiGetter: ApiGetterService) { }
+  constructor(private apiGetter: ApiGetterService,
+              private trailComponent: TrailsComponent,
+              private passer: PasserService) { }
 
   ngOnInit() {
+    this.trails = this.passer.getTrails();
+    this.trailIndex = this.passer.getTrailIndex();
+    console.log (this.trails[this.trailIndex]);
     this.apiGetter.getTrails().subscribe(res => {
-      this.trails = res.trails;
       this.apiGetter.getWeather(this.trails[this.trailIndex].latitude, this.trails[this.trailIndex].longitude).subscribe(res => {
         this.weathers = res;
         this.weathers = this.weathers.list;
