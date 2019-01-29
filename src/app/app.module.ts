@@ -26,14 +26,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component';
 import { AuthModule } from './auth/auth.module';
-<<<<<<< HEAD
 
 import * as firebase from 'firebase';
-
-
-=======
 import {FlexLayoutModule} from "@angular/flex-layout";
->>>>>>> d63cc13ca2399611a9ab9ace8779e3309031d66a
+
 
 @NgModule({
   declarations: [
