@@ -8,7 +8,7 @@ import { ApiGetterService } from '../api-getter.service';
 })
 export class TrailInfoComponent implements OnInit {
 
-  trailIndex = 3;
+  trailIndex = 9;
   trails;
   weathers;
   weatherDates = [];

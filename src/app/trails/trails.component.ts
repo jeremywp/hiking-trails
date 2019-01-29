@@ -13,7 +13,6 @@ export class TrailsComponent implements OnInit {
   trailsList: any;
   public hikingUrl: string;
   private mapQuestUrl: string;
-  show: boolean = true;
 
 
   constructor(private httpClient: HttpClient,
