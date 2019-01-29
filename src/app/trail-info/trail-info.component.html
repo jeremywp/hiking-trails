@@ -2,6 +2,7 @@
         <mat-card-title>{{trails[trailIndex].name}}</mat-card-title>
         <mat-card-subtitle>{{trails[trailIndex].stars}}/5 by {{trails[trailIndex].starVotes}} people</mat-card-subtitle>
         <img class="big-pic" mat-card-image [src]="trails[trailIndex].imgMedium" />
+        <div class="summary"> {{ trails[trailIndex].summary }} </div>
         <div class="content">
                 <div class="left">      
                         <mat-card-subtitle>Difficulty: {{turnToWords(trails[trailIndex].difficulty)}}</mat-card-subtitle>
