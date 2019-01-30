@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TrailsComponent } from './trails/trails.component';
 import { TrailInfoComponent } from './trail-info/trail-info.component';
+<<<<<<< HEAD
 import {TrailsOfUserComponent} from "./trails-of-user/trails-of-user.component";
+=======
+import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component';
+>>>>>>> df03b7cfbfdd6c1115cfff1e9ac9bdef449063af
 
 const routes: Routes = [
   {
@@ -14,7 +18,7 @@ const routes: Routes = [
     component: TrailInfoComponent
   },
   {
-    path: 'user-info',
+    path: 'user',
     component: TrailsOfUserComponent
   },
   { 
