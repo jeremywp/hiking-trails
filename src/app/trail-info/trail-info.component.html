@@ -1,23 +1,24 @@
 <mat-card *ngIf="trails != undefined">
-        <mat-card-title>{{trails[trailIndex].name}}</mat-card-title>
-        <mat-card-subtitle>{{trails[trailIndex].stars}}/5 by {{trails[trailIndex].starVotes}} people</mat-card-subtitle>
-        <img class="big-pic" mat-card-image [src]="trails[trailIndex].imgMedium" />
-        <div class="summary"> {{ trails[trailIndex].summary }} </div>
-        <div class="content">
-                <div class="left">      
-                        <mat-card-subtitle>Difficulty: {{turnToWords(trails[trailIndex].difficulty)}}</mat-card-subtitle>
-                        <mat-checkbox>Completed</mat-checkbox>
-                        <mat-checkbox>Interested</mat-checkbox>
-                    </div>
-                    <div class="right">
-                        <mat-card-subtitle class="weather-title">Next 6 Days Forecast</mat-card-subtitle>
-                        <div class="weather">
-                            <mat-card-subtitle class="day" *ngFor="let day of weatherData">
-                                <img mat-card-image class="weather-icon" [src]="'http://openweathermap.org/img/w/' + day.icon + '.png'" />
-                                <span>{{day.description}}</span>
-                            </mat-card-subtitle>
-                        </div>
-                    </div>
+    <mat-card-title>{{trails[trailIndex].name}}</mat-card-title>
+    <mat-card-subtitle>{{trails[trailIndex].stars}}/5 by {{trails[trailIndex].starVotes}} people</mat-card-subtitle>
+    <div class="big-pic-container"><img class="big-pic" mat-card-image [src]="trails[trailIndex].imgMedium" /></div>
+    <div class="summary"> {{ trails[trailIndex].summary }} </div>
+    <div class="content">
+        <div class="left">
+            <mat-card-subtitle>Difficulty: {{turnToWords(trails[trailIndex].difficulty)}}</mat-card-subtitle>
+            <mat-checkbox>Completed</mat-checkbox>
+            <mat-checkbox>Interested</mat-checkbox>
         </div>
-    
+        <div class="right">
+            <mat-card-subtitle class="weather-title">Next 6 Days Forecast</mat-card-subtitle>
+            <div class="weather">
+                <mat-card-subtitle class="day" *ngFor="let day of weatherData">
+                    <div class="day-content">
+                        <img mat-card-image class="weather-icon" [src]="'http://openweathermap.org/img/w/' + day.icon + '.png'" />
+                        <span>{{day.description}}</span>
+                    </div>
+                </mat-card-subtitle>
+            </div>
+        </div>
+    </div>
 </mat-card>

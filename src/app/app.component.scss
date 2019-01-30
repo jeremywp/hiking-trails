@@ -34,3 +34,9 @@ mat-toolbar{
   .avatar{
       margin-left: 10px;
  }
+
+ @media only screen and (max-width: 600px) {
+     .userName {
+         display: none;
+     }
+ }
