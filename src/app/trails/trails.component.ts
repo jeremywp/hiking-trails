@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {PasserService} from "../passer.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-trails',
@@ -14,12 +13,10 @@ export class TrailsComponent implements OnInit {
   trailsList: any;
   public hikingUrl: string;
   private mapQuestUrl: string;
-  selectedTrail: number;
 
 
   constructor(private httpClient: HttpClient,
-              private passer: PasserService,
-              private router: Router) {
+              private passer: PasserService) {
   }
 
   ngOnInit() {

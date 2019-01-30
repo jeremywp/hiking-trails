@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-trails-of-user',
   templateUrl: './trails-of-user.component.html',
@@ -9,9 +10,14 @@ export class TrailsOfUserComponent implements OnInit {
 
   users;
 
-  constructor() { }
+  constructor() {  }
+
 
   ngOnInit() {
+
   }
+
+
+
 
 }
