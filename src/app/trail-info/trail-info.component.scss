@@ -12,6 +12,7 @@ mat-checkbox {
     height: 30em;
     overflow: hidden;
     margin: 3em 0;
+    border-radius: 5px;
 }
 
 .summary {
@@ -35,6 +36,13 @@ mat-checkbox {
     justify-content: center;
     align-items: center;
     margin-left: 4em;
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .weather-title {
@@ -53,18 +61,42 @@ mat-checkbox {
     display: flex;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
     .weather {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
+
     .content {
         flex-direction: column;
     }
+
     .big-pic-container {
-        height: 10em;
+        height: 8em;
     }
+
     mat-card {
         margin: .5em;
         padding: 1em;
+    }
+
+    .weather-icon {
+        width: 5em;
+    }
+
+    span {
+        margin-top: -2em;
+    }
+
+    .left {
+        margin-bottom: 2em;
+    }
+    
+    .day {
+        margin-left: 0;
+
+        &-content {
+            margin-right: 1.5em;
+        }
     }
 }
