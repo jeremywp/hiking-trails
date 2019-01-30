@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiGetterService } from '../api-getter.service';
 
+
 @Component({
   selector: 'app-trails-of-user',
   templateUrl: './trails-of-user.component.html',
@@ -25,6 +26,7 @@ export class TrailsOfUserComponent implements OnInit {
   ];
   currentUser;
 
+
   constructor(private apiGetter: ApiGetterService) { }
 
   ngOnInit() {
@@ -39,5 +41,8 @@ export class TrailsOfUserComponent implements OnInit {
       }
     }
   }
+
+
+
 
 }
