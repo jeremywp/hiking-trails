@@ -39,7 +39,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    //firebase.firestore().settings({timestampsinSnapshots: true}),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,

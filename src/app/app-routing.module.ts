@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TrailsComponent } from './trails/trails.component';
 import { TrailInfoComponent } from './trail-info/trail-info.component';
+import { TrailsOfUserComponent } from './trails-of-user/trails-of-user.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'trail-info',
     component: TrailInfoComponent
+  },
+  {
+    path: 'user',
+    component: TrailsOfUserComponent
   },
   { 
     path: '', 
