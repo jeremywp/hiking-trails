@@ -25,7 +25,6 @@ export class SignInService {
     private router: Router
   ) {
 
-    //this.afs.firestore.settings({ timestampsInSnapshots: true });
 
       //// Get auth data, then get firestore user document || null
       this.user = this.afAuth.authState.pipe(
