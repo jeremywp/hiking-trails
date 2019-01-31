@@ -53,4 +53,10 @@ export class TrailInfoComponent implements OnInit {
     return string.replace(/([a-z](?=[A-Z]))/g, '$1 ').replace(/^./, function(str){ return str.toUpperCase(); });
   }
 
+  updateCompleted(){
+  }
+  updateInterested(){
+    
+  }
+
 }
