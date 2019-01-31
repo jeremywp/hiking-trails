@@ -89,4 +89,9 @@ export class TrailInfoComponent implements OnInit {
   private removeInterestedTrail() {
     this.userTrailsService.removeInterestedTrail();
   }
+  updateCompleted(){
+  }
+  updateInterested(){
+    
+  }
 }

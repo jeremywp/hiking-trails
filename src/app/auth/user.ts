@@ -3,4 +3,8 @@ export interface User {
     email: string;
     photoURL?: string;
     displayName?: string;
+    completed?: Array<string>;
+    interested?: Array<string>;
+
+
 }
