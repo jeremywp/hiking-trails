@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiGetterService } from '../api-getter.service';
+import {UserTrailsService} from "./user-trails.service";
+import {Trail} from "../trail";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -25,13 +28,20 @@ export class TrailsOfUserComponent implements OnInit {
     }
   ];
   currentUser;
+  private completedTrails$: Observable<Trail>;
+  private interestedTrails$: Observable<Trail>;
+  
 
 
-  constructor(private apiGetter: ApiGetterService) { }
+  constructor(private apiGetter: ApiGetterService,
+              private userTrailsService: UserTrailsService) { }
 
   ngOnInit() {
     this.currentUser = this.findCurrentUser();
     console.log(this.currentUser);
+    this.completedTrails$ = this.userTrailsService.getCompletedTrailsObservable();
+    this.interestedTrails$ = this.userTrailsService.getInterestedTrailsObservable();
+    this.userTrailsService.getUser();
   }
 
   findCurrentUser() {
@@ -41,6 +51,10 @@ export class TrailsOfUserComponent implements OnInit {
       }
     }
   }
+
+
+
+
 
 
 

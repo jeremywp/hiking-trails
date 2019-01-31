@@ -6,8 +6,12 @@
         <div class="content">
                 <div class="left">      
                         <mat-card-subtitle>Difficulty: {{turnToWords(trails[trailIndex].difficulty)}}</mat-card-subtitle>
-                        <mat-checkbox>Completed</mat-checkbox>
-                        <mat-checkbox>Interested</mat-checkbox>
+                        <mat-checkbox class="completedCheckbox" [checked]="completed">
+                          Completed
+                        </mat-checkbox>
+                        <mat-checkbox class="interestedCheckbox" [checked]="interested">
+                          Interested
+                        </mat-checkbox>
                     </div>
                     <div class="right">
                         <mat-card-subtitle class="weather-title">Next 6 Days Forecast</mat-card-subtitle>
