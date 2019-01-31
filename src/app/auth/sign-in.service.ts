@@ -11,6 +11,7 @@ import { User } from '../auth/user'
 
 import { map } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -60,8 +61,14 @@ export class SignInService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL
-    }
+      photoURL: user.photoURL,
+      completed: [],
+      interested: [],
+      }
+
+      
+
+
 
     return userRef.set(data, { merge: true })
 
