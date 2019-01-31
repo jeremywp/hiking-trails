@@ -6,9 +6,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 import { Observable, of } from 'rxjs';
-import { switchMap} from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { User } from '../auth/user'
-
 import { map } from 'rxjs/operators';
 
 
@@ -26,17 +25,17 @@ export class SignInService {
   ) {
 
 
-      //// Get auth data, then get firestore user document || null
-      this.user = this.afAuth.authState.pipe(
-        switchMap(user => {
-          if (user) {
-            return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
-          } else {
-            return of(null)
-          }
-        })
-      )
-    }
+    //// Get auth data, then get firestore user document || null
+    this.user = this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+        } else {
+          return of(null)
+        }
+      })
+    )
+  }
 
   googleLogin() {
     const provider = new auth.GoogleAuthProvider()
@@ -63,11 +62,8 @@ export class SignInService {
       photoURL: user.photoURL,
       completed: [],
       interested: [],
-      }
 
-      
-
-
+    }
 
     return userRef.set(data, { merge: true })
 
@@ -76,7 +72,7 @@ export class SignInService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/']);
+      this.router.navigate(['/']);
     });
   }
 }

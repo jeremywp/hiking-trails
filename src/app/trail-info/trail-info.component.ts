@@ -4,6 +4,9 @@ import {TrailsComponent} from "../trails/trails.component";
 import {PasserService} from "../passer.service";
 import {Trail} from "../trail";
 import {UserTrailsService} from "../trails-of-user/user-trails.service";
+import { AngularFireAuth } from 'angularfire2/auth';
+import { User } from '../auth/user';
+import { combineLatest } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trail-info',
@@ -19,13 +22,21 @@ export class TrailInfoComponent implements OnInit {
   weatherData = [];
   completed: boolean = false;
   interested: boolean = false;
+  user: User;
 
   constructor(private apiGetter: ApiGetterService,
               private trailComponent: TrailsComponent,
               private passer: PasserService,
-              private userTrailsService: UserTrailsService) { }
+              private userTrailsService: UserTrailsService,
+              private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
+    // combineLatest(this.apiGetter.getTrails)
+    this.afAuth.authState.subscribe(user => {
+      this.user = user;
+      console.log(this.user);
+
+    });
     this.trails = this.passer.getTrails();
     this.trailIndex = this.passer.getTrailIndex();
     //console.log (this.trails[this.trailIndex]);
@@ -38,21 +49,9 @@ export class TrailInfoComponent implements OnInit {
     });
   }
 
-  ngOnChanges() {
-    if (this.completed == true) {
-      this.saveCompletedTrail(this.trails[this.trailIndex])
-    } else {
-      this.removeCompletedTrail()
-    }
+  // ngOnChanges() {
 
-    if (this.interested == true) {
-      this.saveInterestedTrail(this.trails[this.trailIndex])
-    } else {
-      this.removeInterestedTrail()
-    }
-
-
-  }
+  // }
 
   filterWeather() {
     let dateMatch = false;
@@ -70,23 +69,47 @@ export class TrailInfoComponent implements OnInit {
     }
   }
 
+  completedFunc() {
+    this.completed = !this.completed;
+    if (this.completed == true) {
+      console.log('complete');
+      this.saveCompletedTrail(this.trails[this.trailIndex])
+    } else {
+      console.log('not complete');
+      this.removeCompletedTrail()
+    }
+  }
+
+  interestedFunc() {
+    this.interested = !this.interested;
+    if (this.interested == true) {
+      console.log('interested');
+      this.saveInterestedTrail(this.trails[this.trailIndex])
+    } else {
+      console.log('not interested')
+      this.removeInterestedTrail()
+    }
+  }
+
   turnToWords(string) {
     return string.replace(/([a-z](?=[A-Z]))/g, '$1 ').replace(/^./, function(str){ return str.toUpperCase(); });
   }
 
   saveCompletedTrail (trail: Trail) {
+    console.log('trail saved on component side');
     this.userTrailsService.saveCompletedTrail(trail);
   }
 
   saveInterestedTrail (trail: Trail) {
+    console.log('trail saved on component side');
     this.userTrailsService.saveInterestedTrail(trail);
   }
 
-  private removeCompletedTrail() {
+  removeCompletedTrail() {
     this.userTrailsService.removeCompletedTrail();
   }
 
-  private removeInterestedTrail() {
+  removeInterestedTrail() {
     this.userTrailsService.removeInterestedTrail();
   }
   updateCompleted(){
