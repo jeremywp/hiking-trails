@@ -37,7 +37,7 @@ export class TrailsComponent implements OnInit {
 
        this.latLon = data;
        this.latLon = this.latLon.results[0].locations[0].latLng;
-       console.log(this.latLon);
+       //console.log(this.latLon);
        this.updateHikingUrl();
      });
     }
@@ -56,7 +56,7 @@ export class TrailsComponent implements OnInit {
     this.getTrailsList().subscribe(data => {
       this.trailsList = data;
       this.trailsList = this.trailsList.trails;
-      console.log(this.trailsList);
+      //console.log(this.trailsList);
       this.passer.setTrails(this.trailsList);
     });
   }

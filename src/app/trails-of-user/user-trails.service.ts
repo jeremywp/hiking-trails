@@ -12,8 +12,8 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class UserTrailsService {
-    private trailsInterestedRef: AngularFirestoreDocument<Trail>;
-    private trailsCompletedRef: AngularFirestoreDocument<Trail>;
+  private trailsInterestedRef: AngularFirestoreDocument<Trail>;
+  private trailsCompletedRef: AngularFirestoreDocument<Trail>;
 
   constructor(private db: AngularFirestore) {
 
@@ -106,13 +106,13 @@ export class UserTrailsService {
   }*/
 
   saveInterestedTrail(trail: Trail) {
-    return this.trailsInterestedRef.set(trail)
-      .then(_ => console.log('Success on set'));
+    // data.interested.push(trail);
+    // console.log(data);
   }
 
   saveCompletedTrail(trail: Trail) {
-    return this.trailsCompletedRef.set(trail)
-      .then(_ => console.log('Success on set'));
+    // data.interested.push(trail);
+    // console.log(data);
   }
 
 
