@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiGetterService } from '../api-getter.service';
 import {TrailsComponent} from "../trails/trails.component";
 import {PasserService} from "../passer.service";
+import {Trail} from "../trail";
+import {UserTrailsService} from "../trails-of-user/user-trails.service";
 
 @Component({
   selector: 'app-trail-info',
@@ -15,10 +17,13 @@ export class TrailInfoComponent implements OnInit {
   weathers;
   weatherDates = [];
   weatherData = [];
+  completed: boolean = false;
+  interested: boolean = false;
 
   constructor(private apiGetter: ApiGetterService,
               private trailComponent: TrailsComponent,
-              private passer: PasserService) { }
+              private passer: PasserService,
+              private userTrailsService: UserTrailsService) { }
 
   ngOnInit() {
     this.trails = this.passer.getTrails();
@@ -31,6 +36,22 @@ export class TrailInfoComponent implements OnInit {
         this.filterWeather();
       })
     });
+  }
+
+  ngOnChanges() {
+    if (this.completed == true) {
+      this.saveCompletedTrail(this.trails[this.trailIndex])
+    } else {
+      this.removeCompletedTrail()
+    }
+
+    if (this.interested == true) {
+      this.saveInterestedTrail(this.trails[this.trailIndex])
+    } else {
+      this.removeInterestedTrail()
+    }
+
+
   }
 
   filterWeather() {
@@ -53,4 +74,24 @@ export class TrailInfoComponent implements OnInit {
     return string.replace(/([a-z](?=[A-Z]))/g, '$1 ').replace(/^./, function(str){ return str.toUpperCase(); });
   }
 
+  saveCompletedTrail (trail: Trail) {
+    this.userTrailsService.saveCompletedTrail(trail);
+  }
+
+  saveInterestedTrail (trail: Trail) {
+    this.userTrailsService.saveInterestedTrail(trail);
+  }
+
+  private removeCompletedTrail() {
+    this.userTrailsService.removeCompletedTrail();
+  }
+
+  private removeInterestedTrail() {
+    this.userTrailsService.removeInterestedTrail();
+  }
+  updateCompleted(){
+  }
+  updateInterested(){
+    
+  }
 }

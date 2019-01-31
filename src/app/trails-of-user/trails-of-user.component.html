@@ -2,16 +2,16 @@
 
   <mat-card-title>{{currentUser.displayName}}</mat-card-title>
 
-  <!--  <mat-card-header>Completed Trails:</mat-card-header>
-  <div class="completed" *ngFor="let completedTrail of completedTrails">
+    <mat-card-header>Completed Trails:</mat-card-header>
+  <div class="completed" *ngFor="let completedTrail of completedTrails$">
     <span routerLink="/trail-info">
       {{ completedTrail.name }}
     </span>
   </div>
   <mat-card-header>Interested Trails:</mat-card-header>
-  <div class="interested" *ngFor="let interestedTrail of interestedTrails">
+  <div class="interested" *ngFor="let interestedTrail of interestedTrails$">
     <span routerLink="/trail-info">
       {{ interestedTrail.name }}
     </span>
-  </div>-->
+  </div>
 </mat-card>

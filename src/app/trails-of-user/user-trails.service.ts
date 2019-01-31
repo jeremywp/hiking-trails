@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "@angular/fire/firestore";
+import {
+  AngularFirestoreDocument,
+  DocumentChangeAction
+} from "@angular/fire/firestore";
+import { AngularFirestore } from "@angularfire2/firestore";
 import {Trail} from "../trail";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
@@ -8,16 +12,24 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class UserTrailsService {
-    private trailsInterestedRef: AngularFirestoreCollection<Trail>;
-    private trailsCompletedRef: AngularFirestoreCollection<Trail>;
+    private trailsInterestedRef: AngularFirestoreDocument<Trail>;
+    private trailsCompletedRef: AngularFirestoreDocument<Trail>;
 
   constructor(private db: AngularFirestore) {
-    this.trailsInterestedRef = this.db.collection<Trail>(`interestedTrails`);
-    this.trailsCompletedRef = this.db.collection<Trail>(`completedTrails`);
+
+  }
+
+  getUser() {
+    return this.db.collection(`user`, ref => ref.where(`uid`, `==`, `ODbJRRhVa3NIGLqhRLwVmzjdBLJ3`));
+    //this.trailsCompletedRef = this.db.doc<Trail>(`user.uid.completedTrails`);
   }
 
 
-  getInterestedTrailsObservable(): Observable<Trail[]> {
+  getInterestedTrailsObservable(): Observable<Trail> {
+    return this.trailsInterestedRef.valueChanges()
+  }
+
+  /*getInterestedTrailsObservable(): Observable<Trail[]> {
     return this.trailsInterestedRef.snapshotChanges()
       .pipe(
         map((items: DocumentChangeAction<Trail>[]): Trail[] => {
@@ -50,9 +62,13 @@ export class UserTrailsService {
           })
         })
       )
+  }*/
+
+  getCompletedTrailsObservable(): Observable<Trail> {
+    return this.trailsCompletedRef.valueChanges();
   }
 
-  getCompletedTrailsObservable(): Observable<Trail[]> {
+  /*getCompletedTrailsObservable(): Observable<Trail[]> {
     return this.trailsCompletedRef.snapshotChanges()
       .pipe(
         map((items: DocumentChangeAction<Trail>[]): Trail[] => {
@@ -85,22 +101,28 @@ export class UserTrailsService {
           })
         })
       )
-  }
-
-  getTrailObservable(id:number): Observable<Trail> {
-    return this.db.doc<Trail>(`trails/${id}`).valueChanges();
-  }
+  }*/
 
   saveInterestedTrail(trail: Trail) {
-    return this.trailsInterestedRef.add(trail)
+    return this.trailsInterestedRef.set(trail)
       .then(_ => console.log('Success on set'));
   }
 
   saveCompletedTrail(trail: Trail) {
-    return this.trailsCompletedRef.add(trail)
+    return this.trailsCompletedRef.set(trail)
       .then(_ => console.log('Success on set'));
   }
 
 
+  removeCompletedTrail() {
+    return this.trailsCompletedRef.delete()
+      .then(_ => console.log('Success on remove'))
+      .catch(error => console.log('remove', error));
+  }
 
+  removeInterestedTrail() {
+    return this.trailsInterestedRef.delete()
+      .then(_ => console.log('Success on remove'))
+      .catch(error => console.log('remove', error));
+  }
 }
