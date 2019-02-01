@@ -7,6 +7,9 @@ import { AngularFirestore } from "angularfire2/firestore";
 import {Trail} from "../trail";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {SignInService} from "../auth/sign-in.service";
+import {TrailInfoComponent} from "../trail-info/trail-info.component";
+import {TrailsComponent} from "../trails/trails.component";
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +17,21 @@ import {map} from "rxjs/operators";
 export class UserTrailsService {
   private trailsInterestedRef: AngularFirestoreDocument<Trail>;
   private trailsCompletedRef: AngularFirestoreDocument<Trail>;
+  private trailsComponent: TrailsComponent;
+  public user;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore,
+              private signInService: SignInService) {
 
   }
 
   getUser() {
+    return this.signInService.user;
+
     return this.db.collection(`user`, ref => ref.where(`uid`, `==`, `ODbJRRhVa3NIGLqhRLwVmzjdBLJ3`));
     
     //this.trailsCompletedRef = this.db.doc<Trail>(`user.uid.completedTrails`);
+
   }
 
 
@@ -106,11 +115,17 @@ export class UserTrailsService {
   }*/
 
   saveInterestedTrail(trail: Trail) {
+    console.log(this.user);
+    this.signInService.interested.push(trail);
+    this.signInService.updateUserData(this.user);
     // data.interested.push(trail);
     // console.log(data);
   }
 
   saveCompletedTrail(trail: Trail) {
+    console.log(this.user);
+    this.signInService.completed.push(trail);
+    this.signInService.updateUserData(this.user);
     // data.interested.push(trail);
     // console.log(data);
   }
