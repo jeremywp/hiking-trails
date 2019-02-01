@@ -3,7 +3,7 @@ import {
   AngularFirestoreDocument,
   DocumentChangeAction
 } from "@angular/fire/firestore";
-import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFirestore } from "angularfire2/firestore";
 import {Trail} from "../trail";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
@@ -27,7 +27,13 @@ export class UserTrailsService {
 
   getUser() {
     return this.signInService.user;
+
+    return this.db.collection(`user`, ref => ref.where(`uid`, `==`, `ODbJRRhVa3NIGLqhRLwVmzjdBLJ3`));
+    
+    //this.trailsCompletedRef = this.db.doc<Trail>(`user.uid.completedTrails`);
+
   }
+
 
 
   getInterestedTrailsObservable(): Observable<Trail> {
