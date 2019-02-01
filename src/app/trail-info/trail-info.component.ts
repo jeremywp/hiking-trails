@@ -7,6 +7,7 @@ import {UserTrailsService} from "../trails-of-user/user-trails.service";
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../auth/user';
 import { combineLatest } from 'rxjs/operators';
+import {SignInService} from "../auth/sign-in.service";
 
 @Component({
   selector: 'app-trail-info',
@@ -23,20 +24,15 @@ export class TrailInfoComponent implements OnInit {
   completed: boolean = false;
   interested: boolean = false;
   user: User;
+  private afAuth: AngularFireAuth;
 
   constructor(private apiGetter: ApiGetterService,
               private trailComponent: TrailsComponent,
               private passer: PasserService,
               private userTrailsService: UserTrailsService,
-              private afAuth: AngularFireAuth) { }
+              private signInService: SignInService) { }
 
   ngOnInit() {
-    // combineLatest(this.apiGetter.getTrails)
-    this.afAuth.authState.subscribe(user => {
-      this.user = user;
-      console.log(this.user);
-
-    });
     this.trails = this.passer.getTrails();
     this.trailIndex = this.passer.getTrailIndex();
     //console.log (this.trails[this.trailIndex]);
@@ -47,6 +43,7 @@ export class TrailInfoComponent implements OnInit {
         this.filterWeather();
       })
     });
+
   }
 
   // ngOnChanges() {
@@ -69,24 +66,24 @@ export class TrailInfoComponent implements OnInit {
     }
   }
 
-  completedFunc() {
+  completedFunc(trail:Trail) {
     this.completed = !this.completed;
     if (this.completed == true) {
       console.log('complete');
-      this.saveCompletedTrail(this.trails[this.trailIndex])
+      this.saveCompletedTrail(trail)
     } else {
       console.log('not complete');
       this.removeCompletedTrail()
     }
   }
 
-  interestedFunc() {
+  interestedFunc(trail:Trail) {
     this.interested = !this.interested;
     if (this.interested == true) {
       console.log('interested');
-      this.saveInterestedTrail(this.trails[this.trailIndex])
+      this.saveInterestedTrail(trail)
     } else {
-      console.log('not interested')
+      console.log('not interested');
       this.removeInterestedTrail()
     }
   }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {PasserService} from "../passer.service";
+import {AngularFireAuth} from "@angular/fire/auth";
+import {TrailInfoComponent} from "../trail-info/trail-info.component";
+import {UserTrailsService} from "../trails-of-user/user-trails.service";
 
 @Component({
   selector: 'app-trails',
@@ -11,15 +14,23 @@ export class TrailsComponent implements OnInit {
   zipCode: number;
   latLon: any;
   trailsList: any;
+  public user;
   public hikingUrl: string;
   private mapQuestUrl: string;
+  private userTrailsService: UserTrailsService;
 
 
   constructor(private httpClient: HttpClient,
-              private passer: PasserService) {
+              private passer: PasserService,
+              private afAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
+    this.afAuth.authState.subscribe(user => {
+      this.user = user;
+      this.userTrailsService.user = user;
+      console.log(this.user);
+    })
   }
 
 

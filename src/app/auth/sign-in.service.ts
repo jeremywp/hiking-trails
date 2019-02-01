@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../auth/user'
 import { map } from 'rxjs/operators';
+import {Trail} from "../trail";
 
 
 @Injectable({
@@ -17,6 +18,9 @@ import { map } from 'rxjs/operators';
 export class SignInService {
 
   user: Observable<User>;
+  public completed: Trail[] = [];
+  public interested: Trail[] = [];
+  public data: { uid: any; photoURL: any | string; displayName: any; completed: Trail[][]; interested: Trail[][]; email: any };
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -38,34 +42,32 @@ export class SignInService {
   }
 
   googleLogin() {
-    const provider = new auth.GoogleAuthProvider()
+    const provider = new auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
 
-  private oAuthLogin(provider) {
+  oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
-        this.updateUserData(credential.user)
+        return this.updateUserData(credential.user)
       })
   }
 
 
-  private updateUserData(user) {
+ updateUserData(user) {
     // Sets user data to firestore on login
-
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
-    const data: User = {
+    this.data = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      completed: [],
-      interested: [],
-
-    }
-
-    return userRef.set(data, { merge: true })
+      completed: [this.completed],
+      interested: [this.interested]
+    };
+    console.log("User data updated");
+    return userRef.set(this.data, { merge: true })
 
   }
 
