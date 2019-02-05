@@ -4,6 +4,7 @@ import {PasserService} from "../passer.service";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {TrailInfoComponent} from "../trail-info/trail-info.component";
 import {UserTrailsService} from "../trails-of-user/user-trails.service";
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-trails',
@@ -17,12 +18,13 @@ export class TrailsComponent implements OnInit {
   public user;
   public hikingUrl: string;
   private mapQuestUrl: string;
-  private userTrailsService: UserTrailsService;
 
 
   constructor(private httpClient: HttpClient,
               private passer: PasserService,
-              private afAuth: AngularFireAuth) {
+              private afs: AngularFirestore,
+              private afAuth: AngularFireAuth,
+              private userTrailsService: UserTrailsService) {
   }
 
   ngOnInit() {
@@ -30,7 +32,9 @@ export class TrailsComponent implements OnInit {
       this.user = user;
       this.userTrailsService.user = user;
       console.log(this.user);
-    })
+    });
+    this.afs.collection('users').doc(this.user.uid).collection('completedTrails').valueChanges()
+      .subscribe(data => {this.userTrailsService.completedTrails = data}).add(console.log(this.userTrailsService.completedTrails))
   }
 
 
