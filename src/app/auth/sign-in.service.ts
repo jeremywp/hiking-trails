@@ -7,7 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from '../auth/user'
+import { User } from './user'
 import { map } from 'rxjs/operators';
 import {Trail} from "../trail";
 
@@ -20,7 +20,7 @@ export class SignInService {
   user: Observable<User>;
   public completed: Trail[] = [];
   public interested: Trail[] = [];
-  public data: { uid: any; photoURL: any | string; displayName: any; completed: Trail[][]; interested: Trail[][]; email: any };
+  public data: { uid: any; photoURL: any | string; displayName: any; email: any };
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -62,11 +62,9 @@ export class SignInService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL,
-      completed: [this.completed],
-      interested: [this.interested]
+      photoURL: user.photoURL
     };
-    console.log("User data updated");
+    console.log(this.data);
     return userRef.set(this.data, { merge: true })
 
   }
