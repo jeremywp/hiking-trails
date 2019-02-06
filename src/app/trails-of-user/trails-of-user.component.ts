@@ -5,6 +5,8 @@ import {Trail} from "../trail";
 import {Observable} from "rxjs";
 import { User } from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
+import {AngularFirestore} from "@angular/fire/firestore";
+import {TrailInfoComponent} from "../trail-info/trail-info.component";
 
 
 @Component({
@@ -21,24 +23,23 @@ export class TrailsOfUserComponent implements OnInit {
   private completedTrails$: Observable<Trail>;
   private interestedTrails$: Observable<Trail>;
   user: User;
+  user$;
   
 
 
   constructor(private apiGetter: ApiGetterService,
               private userTrailsService: UserTrailsService,
-              private afAuth: AngularFireAuth) { }
+              private afAuth: AngularFireAuth,
+              private afs: AngularFirestore,
+              private trailInfoComponent: TrailInfoComponent) { }
 
   ngOnInit() {
+    this.user$ = this.trailInfoComponent.user$;
     this.afAuth.authState.subscribe(user => {
       this.user = user;
       console.log(this.user);
-
     });
     this.currentUser = this.findCurrentUser();
-    
-    this.completedTrails$ = this.userTrailsService.getCompletedTrailsObservable();
-    this.interestedTrails$ = this.userTrailsService.getInterestedTrailsObservable();
-    this.userTrailsService.getUser();
   }
 
   findCurrentUser() {
