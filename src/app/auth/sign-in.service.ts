@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../auth/user'
 import { map } from 'rxjs/operators';
-import {Trail} from "../trail";
+import { Trail } from "../trail";
 
 
 @Injectable({
