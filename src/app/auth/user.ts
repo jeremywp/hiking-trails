@@ -5,6 +5,6 @@ export interface User {
     displayName?: string;
     completed?: Array<any>;
     interested?: Array<any>;
-
+    
 
 }
