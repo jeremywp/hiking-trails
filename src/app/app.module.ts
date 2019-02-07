@@ -60,7 +60,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     FlexLayoutModule,
 
   ],
-  providers: [TrailsComponent],
+  providers: [TrailsComponent, TrailInfoComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
