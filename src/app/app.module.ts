@@ -29,6 +29,7 @@ import { AuthModule } from './auth/auth.module';
 
 import * as firebase from 'firebase';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     AppComponent,
     TrailInfoComponent,
     TrailsComponent,
-    TrailsOfUserComponent
+    TrailsOfUserComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
