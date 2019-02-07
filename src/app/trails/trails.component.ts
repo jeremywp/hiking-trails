@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {PasserService} from "../passer.service";
 import {AngularFireAuth} from "@angular/fire/auth";
-import {TrailInfoComponent} from "../trail-info/trail-info.component";
 import {UserTrailsService} from "../trails-of-user/user-trails.service";
 import {AngularFirestore} from "@angular/fire/firestore";
 
@@ -34,7 +33,11 @@ export class TrailsComponent implements OnInit {
       console.log(this.user);
     });
     this.afs.collection('users').doc(this.user.uid).collection('completedTrails').valueChanges()
-      .subscribe(data => {this.userTrailsService.completedTrails = data}).add(console.log(this.userTrailsService.completedTrails))
+      .subscribe(data => {this.userTrailsService.completedTrails = data
+      });
+    this.afs.collection('users').doc(this.user.uid).collection('interestedTrails').valueChanges()
+      .subscribe(data => {this.userTrailsService.interestedTrails = data
+      });
   }
 
 
