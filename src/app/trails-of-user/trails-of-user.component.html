@@ -1,17 +1,15 @@
 <mat-card>
-
   <mat-card-title>{{user.displayName}}</mat-card-title>
-
     <mat-card-header>Completed Trails:</mat-card-header>
-  <ul class="completed" *ngFor="let ctrail of completedTrails">
-    <li routerLink="/trail-info">
-      {{ ctrail.name }}
-    </li>
-  </ul>
-  <mat-card-header>Interested Trails:</mat-card-header>
-  <ul class="interested" *ngFor="let itrail of interestedTrails">
-    <li routerLink="/trail-info">
-      {{ itrail.name }}
-    </li>
-  </ul>
+      <ul class="completed" *ngFor="let ctrail of completedTrails">
+        <li routerLink="/trail-info">
+          {{ ctrail.name }}
+        </li>
+      </ul>
+    <mat-card-header>Interested Trails:</mat-card-header>
+      <ul class="interested" *ngFor="let itrail of interestedTrails">
+        <li routerLink="/trail-info">
+          {{ itrail.name }}
+        </li>
+      </ul>
 </mat-card>
