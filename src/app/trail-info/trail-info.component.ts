@@ -108,7 +108,7 @@ export class TrailInfoComponent implements OnInit {
       this.saveInterestedTrail(user, trail)
     } else {
       console.log('not interested');
-      this.removeInterestedTrail()
+      this.removeInterestedTrail(user, trail)
     }
   }
 
@@ -137,8 +137,11 @@ export class TrailInfoComponent implements OnInit {
       completedTrails: this.userTrailsService.completedTrails}, {merge:true});
   }
 
-  removeInterestedTrail() {
-    this.userTrailsService.removeInterestedTrail();
+  removeInterestedTrail(user, trail) {
+    let i = this.userTrailsService.interestedTrails.indexOf(trail);
+    this.userTrailsService.interestedTrails.splice(i,1);
+    this.userCollectionRef.doc(user.uid).update({
+      interestedTrails: this.userTrailsService.interestedTrails}, {merge:true});
   }
   updateCompleted(){
   }
