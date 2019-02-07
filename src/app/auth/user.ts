@@ -3,6 +3,8 @@ export interface User {
     email: string;
     photoURL?: string;
     displayName?: string;
-    completed?: Array<any>;
-    interested?: Array<any>;
+    completedTrails?: Array<any>;
+    interestedTrails?: Array<any>;
+
+
 }
