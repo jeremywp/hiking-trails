@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
-  AngularFirestoreDocument,
-  DocumentChangeAction
+  AngularFirestoreDocument
 } from "@angular/fire/firestore";
 import { AngularFirestore } from "angularfire2/firestore";
-import {Trail} from "../trail";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
-import {SignInService} from "../auth/sign-in.service";
-import {TrailInfoComponent} from "../trail-info/trail-info.component";
-import {TrailsComponent} from "../trails/trails.component";
+import {Trail} from "../trail"
 import {User} from "../auth/user";
 
 @Injectable({
@@ -18,7 +12,6 @@ import {User} from "../auth/user";
 export class UserTrailsService {
   private trailsInterestedRef: AngularFirestoreDocument<Trail>;
   private trailsCompletedRef: AngularFirestoreDocument<Trail>;
-  private trailsComponent: TrailsComponent;
   public user;
   completedTrails = [];
   interestedTrails = [];
@@ -27,8 +20,6 @@ export class UserTrailsService {
   constructor(private afs: AngularFirestore) {
     this.userCollectionRef = this.afs.collection<User>('users');
   }
-
-
 
   removeCompletedTrail() {
     return this.trailsCompletedRef.delete()

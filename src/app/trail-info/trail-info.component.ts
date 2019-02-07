@@ -6,10 +6,7 @@ import {Trail} from "../trail";
 import {UserTrailsService} from "../trails-of-user/user-trails.service";
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../auth/user';
-import {combineLatest, switchMap} from 'rxjs/operators';
-import {SignInService} from "../auth/sign-in.service";
-import {Observable, of} from "rxjs";
-import { map } from 'rxjs/operators';
+import {Observable} from "rxjs";
 import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
@@ -66,12 +63,6 @@ export class TrailInfoComponent implements OnInit {
     }
     console.log(this.userTrailsService.completedTrails);
 
-  }
-
-  updateUser(user, trail) {
-    this.userCollectionRef.doc(user.uid).update({
-      completedTrail: trail, interested: !trail.interested
-    })
   }
 
   filterWeather() {
@@ -142,10 +133,5 @@ export class TrailInfoComponent implements OnInit {
     this.userTrailsService.interestedTrails.splice(i,1);
     this.userCollectionRef.doc(user.uid).update({
       interestedTrails: this.userTrailsService.interestedTrails}, {merge:true});
-  }
-  updateCompleted(){
-  }
-  updateInterested(){
-    
   }
 }

@@ -7,9 +7,8 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from './user'
-import { map } from 'rxjs/operators';
-import { Trail } from "../trail";
+import { User } from './user';
+import {Trail} from "../trail";
 
 
 @Injectable({
