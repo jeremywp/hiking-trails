@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {PasserService} from "../passer.service";
-import {AngularFireAuth} from "@angular/fire/auth";
-import {UserTrailsService} from "../trails-of-user/user-trails.service";
-import {AngularFirestore} from "@angular/fire/firestore";
+import { HttpClient } from "@angular/common/http";
+import { PasserService } from "../passer.service";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { UserTrailsService } from "../trails-of-user/user-trails.service";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-trails',
@@ -20,47 +20,50 @@ export class TrailsComponent implements OnInit {
 
 
   constructor(private httpClient: HttpClient,
-              private passer: PasserService,
-              private afs: AngularFirestore,
-              private afAuth: AngularFireAuth,
-              private userTrailsService: UserTrailsService) {
+    private passer: PasserService,
+    private afs: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private userTrailsService: UserTrailsService) {
   }
 
   ngOnInit() {
     this.afAuth.authState.subscribe(user => {
       this.user = user;
       this.userTrailsService.user = user;
-      console.log(this.user);
+      // console.log(this.user);
+      this.afs.collection('users').doc(this.user.uid).collection('completedTrails').valueChanges()
+        .subscribe(data => {
+          this.userTrailsService.completedTrails = data
+        });
+      this.afs.collection('users').doc(this.user.uid).collection('interestedTrails').valueChanges()
+        .subscribe(data => {
+          this.userTrailsService.interestedTrails = data
+        });
     });
-    this.afs.collection('users').doc(this.user.uid).collection('completedTrails').valueChanges()
-      .subscribe(data => {this.userTrailsService.completedTrails = data
-      });
-    this.afs.collection('users').doc(this.user.uid).collection('interestedTrails').valueChanges()
-      .subscribe(data => {this.userTrailsService.interestedTrails = data
-      });
+
   }
 
 
-  updateMapUrl () {
+  updateMapUrl() {
     this.mapQuestUrl = 'http://open.mapquestapi.com/geocoding/v1/address?key=z09V87z5rXEly0yFADXnEMWFbNvH3Bsd&location=' + this.zipCode;
     this.getLngAndLat();
   }
 
-  getLocationData () {
+  getLocationData() {
     return this.httpClient.get(this.mapQuestUrl);
   }
 
-   getLngAndLat () {
-     this.getLocationData().subscribe(data => {
+  getLngAndLat() {
+    this.getLocationData().subscribe(data => {
 
-       this.latLon = data;
-       this.latLon = this.latLon.results[0].locations[0].latLng;
-       //console.log(this.latLon);
-       this.updateHikingUrl();
-     });
-    }
+      this.latLon = data;
+      this.latLon = this.latLon.results[0].locations[0].latLng;
+      //console.log(this.latLon);
+      this.updateHikingUrl();
+    });
+  }
 
-  updateHikingUrl () {
+  updateHikingUrl() {
     this.hikingUrl = 'https://www.hikingproject.com/data/get-trails?lat=' + this.latLon.lat + '&lon=' + this.latLon.lng + '&maxDistance=25&key=200411541-4117e4688ccd63ae5e065df8c7c54b2a';
     this.getTrailsData();
     this.passer.setLonLat(this.latLon);
@@ -80,7 +83,7 @@ export class TrailsComponent implements OnInit {
   }
 
   getTrails() {
-      this.updateMapUrl();
+    this.updateMapUrl();
   }
 
   getTrailIndex(i) {
