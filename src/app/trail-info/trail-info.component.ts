@@ -20,6 +20,7 @@ export class TrailInfoComponent implements OnInit {
   trails;
   completedTrailsRef;
   interestedTrailsRef;
+  commentsTrailsRef;
   weathers;
   weatherDates = [];
   weatherData = [];
@@ -48,6 +49,7 @@ export class TrailInfoComponent implements OnInit {
     await (this.userTrailsService.user = this.user);
     await (this.completedTrailsRef = this.afs.collection('users').doc(this.user.uid).collection('completedTrails'));
     await (this.interestedTrailsRef = this.afs.collection('users').doc(this.user.uid).collection('interestedTrails'));
+    await (this.commentsTrailsRef = this.afs.collection('users').doc(this.user.uid).collection('commentsTrails'));
     this.trails = this.passer.getTrails();
     this.trailIndex = this.passer.getTrailIndex();
     this.apiGetter.getTrails().subscribe(res => {
