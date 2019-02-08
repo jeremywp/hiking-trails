@@ -31,6 +31,7 @@ export class TrailsComponent implements OnInit {
       this.user = user;
       this.userTrailsService.user = user;
       // console.log(this.user);
+      
       this.afs.collection('users').doc(this.user.uid).collection('completedTrails').valueChanges()
         .subscribe(data => {
           this.userTrailsService.completedTrails = data
