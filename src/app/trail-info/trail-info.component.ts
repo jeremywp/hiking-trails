@@ -63,6 +63,11 @@ export class TrailInfoComponent implements OnInit {
     }
     console.log(this.userTrailsService.completedTrails);
 
+    if (this.userTrailsService.interestedTrails.find( _ => _.id == this.trails[this.trailIndex].id)){
+      this.interested = true;
+    }
+    console.log(this.userTrailsService.interestedTrails);
+
   }
 
   filterWeather() {
