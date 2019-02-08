@@ -62,7 +62,7 @@ export class TrailInfoComponent implements OnInit {
       this.completed = true;
     }
     console.log(this.userTrailsService.completedTrails);
-
+    
   }
 
   filterWeather() {

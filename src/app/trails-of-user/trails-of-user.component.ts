@@ -13,17 +13,11 @@ import {TrailInfoComponent} from "../trail-info/trail-info.component";
   styleUrls: ['./trails-of-user.component.scss']
 })
 export class TrailsOfUserComponent implements OnInit {
- 
   
-  usid = 0;
-  users = [];
-  currentUser;
-  private completedTrails;
-  private interestedTrails;
+   completedTrails = [];
+   interestedTrails = [];
   user: User;
   user$;
-  
-
 
   constructor(private apiGetter: ApiGetterService,
               private userTrailsService: UserTrailsService,
@@ -35,31 +29,15 @@ export class TrailsOfUserComponent implements OnInit {
     this.user$ = this.trailInfoComponent.user$;
     this.afAuth.authState.subscribe(user => {
       this.user = user;
-      //console.log(this.user);
+      // console.log(this.user);
+      this.afs.collection('users').doc(user.uid).ref.get().then(doc => {
+        console.log(this.completedTrails);
+        console.log(doc.data().completedTrails);
+        this.completedTrails = doc.data().completedTrails;
+        this.interestedTrails = doc.data().interestedTrails;
+        
+      });
     });
-    this.currentUser = this.findCurrentUser();
-
-    this.completedTrails = this.userTrailsService.completedTrails;
-    this.interestedTrails = this.userTrailsService.interestedTrails;
   }
-
-  findCurrentUser() {
-    for(let i = 0; i < this.users.length; i++) {
-      if(this.users[i].id == this.usid) {
-        return this.users[i];
-        
-        
-      }
-      
-    }
-    
-  }
-
-
-
-
-
-
-
 
 }

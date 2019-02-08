@@ -1,6 +1,6 @@
 
 <mat-card>
-  <mat-card-title>{{user.displayName}}</mat-card-title>
+  <mat-card-title>{{user?.displayName}}</mat-card-title>
     <mat-card-header>Completed Trails:</mat-card-header>
       <ul class="completed" *ngFor="let ctrail of completedTrails">
         <li routerLink="/trail-info">
