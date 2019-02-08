@@ -50,7 +50,6 @@ export class TrailInfoComponent implements OnInit {
     await (this.interestedTrailsRef = this.afs.collection('users').doc(this.user.uid).collection('interestedTrails'));
     this.trails = this.passer.getTrails();
     this.trailIndex = this.passer.getTrailIndex();
-    //console.log (this.trails[this.trailIndex]);
     this.apiGetter.getTrails().subscribe(res => {
       this.apiGetter.getWeather(this.trails[this.trailIndex].latitude, this.trails[this.trailIndex].longitude).subscribe(res => {
         this.weathers = res;
@@ -61,8 +60,7 @@ export class TrailInfoComponent implements OnInit {
     if (this.userTrailsService.completedTrails.find( _ => _.id == this.trails[this.trailIndex].id)){
       this.completed = true;
     }
-    console.log(this.userTrailsService.completedTrails);
-
+    
   }
 
   filterWeather() {
@@ -84,10 +82,9 @@ export class TrailInfoComponent implements OnInit {
   completedFunc(user, trail:Trail) {
     this.completed = !this.completed;
     if (this.completed == true) {
-      console.log(this.userTrailsService.completedTrails);
       this.saveCompletedTrail(user, trail)
     } else {
-      console.log('not complete');
+      // console.log('not complete');
       this.removeCompletedTrail(user, trail)
     }
   }
@@ -95,10 +92,10 @@ export class TrailInfoComponent implements OnInit {
   interestedFunc(user, trail:Trail) {
     this.interested = !this.interested;
     if (this.interested == true) {
-      console.log('interested');
+      // console.log('interested');
       this.saveInterestedTrail(user, trail)
     } else {
-      console.log('not interested');
+      // console.log('not interested');
       this.removeInterestedTrail(user, trail)
     }
   }
@@ -108,14 +105,14 @@ export class TrailInfoComponent implements OnInit {
   }
 
   saveCompletedTrail (user, trail: Trail) {
-    console.log('trail saved on component side');
+    // console.log('trail saved on component side');
     this.userTrailsService.completedTrails.push(trail);
     this.userCollectionRef.doc(user.uid).update({
       completedTrails: this.userTrailsService.completedTrails}, {merge:true});
   }
 
   saveInterestedTrail (user, trail: Trail) {
-    console.log('trail saved on component side');
+    // console.log('trail saved on component side');
     this.userTrailsService.interestedTrails.push(trail);
     this.userCollectionRef.doc(user.uid).update({
       interestedTrails: this.userTrailsService.interestedTrails});
