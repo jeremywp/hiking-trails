@@ -31,8 +31,8 @@ export class TrailsOfUserComponent implements OnInit {
       this.user = user;
       // console.log(this.user);
       this.afs.collection('users').doc(user.uid).ref.get().then(doc => {
-        console.log(this.completedTrails);
-        console.log(doc.data().completedTrails);
+        // console.log(this.completedTrails);
+        // console.log(doc.data().completedTrails);
         this.completedTrails = doc.data().completedTrails;
         this.interestedTrails = doc.data().interestedTrails;
         

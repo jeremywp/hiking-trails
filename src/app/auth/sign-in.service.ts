@@ -63,7 +63,6 @@ export class SignInService {
       displayName: user.displayName,
       photoURL: user.photoURL
     };
-    console.log(this.data);
     return userRef.set(this.data, { merge: true })
 
   }
