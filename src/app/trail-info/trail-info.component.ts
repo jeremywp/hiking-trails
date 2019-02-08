@@ -50,8 +50,6 @@ export class TrailInfoComponent implements OnInit {
     await (this.interestedTrailsRef = this.afs.collection('users').doc(this.user.uid).collection('interestedTrails'));
     this.trails = this.passer.getTrails();
     this.trailIndex = this.passer.getTrailIndex();
-    console.log(this.trails);
-    console.log(this.trailIndex);
     this.apiGetter.getTrails().subscribe(res => {
       this.apiGetter.getWeather(this.trails[this.trailIndex].latitude, this.trails[this.trailIndex].longitude).subscribe(res => {
         this.weathers = res;
