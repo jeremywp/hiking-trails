@@ -5,6 +5,8 @@ import { User } from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFirestore} from "@angular/fire/firestore";
 import {TrailInfoComponent} from "../trail-info/trail-info.component";
+import { PasserService } from 'app/passer.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,13 +16,15 @@ import {TrailInfoComponent} from "../trail-info/trail-info.component";
 })
 export class TrailsOfUserComponent implements OnInit {
   
-   completedTrails = [];
-   interestedTrails = [];
+  completedTrails = [];
+  interestedTrails = [];
   user: User;
   user$;
 
   constructor(private apiGetter: ApiGetterService,
               private userTrailsService: UserTrailsService,
+              private router: Router,
+              private passer: PasserService,
               private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private trailInfoComponent: TrailInfoComponent) { }
@@ -35,9 +39,16 @@ export class TrailsOfUserComponent implements OnInit {
         // console.log(doc.data().completedTrails);
         this.completedTrails = doc.data().completedTrails;
         this.interestedTrails = doc.data().interestedTrails;
-        
       });
     });
+  }
+
+  routeToTrail(e) {
+    let ary = [];
+    ary.push(e);
+    this.passer.setTrails(ary);
+    this.passer.setTrailIndex(0);
+    this.router.navigate(['/trail-info']);
   }
 
 }
