@@ -23,5 +23,45 @@
             </div>
         </div>
     </div>
-    <button mat-raised-button class='commentsButton' [routerLink]="['/comments']">Add Comments</button>
+  <div class="ratings" *ngIf="completed">
+    <textarea class="user-comments" placeholder="How was your hike?" type="text" [(ngModel)]="comment"> {{ comment }}
+    </textarea>
+    <div class="wrapper">
+      <div class="star-score">
+        <span *ngIf="stars >=1" >
+          <img src="../../assets/icons/baseline-star-24px.svg" (click)="rateTrail(1)">
+        </span>
+        <span *ngIf="stars >=2" >
+          <img src="../../assets/icons/baseline-star-24px.svg" (click)="rateTrail(2)">
+        </span>
+        <span *ngIf="stars >=3" >
+          <img src="../../assets/icons/baseline-star-24px.svg" (click)="rateTrail(3)">
+        </span>
+        <span *ngIf="stars >=4" >
+          <img src="../../assets/icons/baseline-star-24px.svg" (click)="rateTrail(4)">
+        </span>
+        <span *ngIf="stars ==5" >
+          <img src="../../assets/icons/baseline-star-24px.svg" (click)="rateTrail(5)">
+        </span>
+        <span *ngIf="stars ==0" >
+          <img src="../../assets/icons/baseline-star_border-24px.svg" (click)="rateTrail(1)">
+        </span>
+        <span *ngIf="stars <=1" >
+          <img src="../../assets/icons/baseline-star_border-24px.svg" (click)="rateTrail(2)">
+        </span>
+        <span *ngIf="stars <=2" >
+          <img src="../../assets/icons/baseline-star_border-24px.svg" (click)="rateTrail(3)">
+        </span>
+        <span *ngIf="stars <=3" >
+          <img src="../../assets/icons/baseline-star_border-24px.svg" (click)="rateTrail(4)">
+        </span>
+        <span *ngIf="stars <=4" >
+          <img src="../../assets/icons/baseline-star_border-24px.svg" (click)="rateTrail(5)">
+        </span>
+      </div>
+      <button mat-raised-button
+              (click)="saveComment(user, trails[trailIndex]); saveStars(user, trails[trailIndex])">Save
+        Comment and Rating</button>
+    </div>
+  </div>
 </mat-card>

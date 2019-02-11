@@ -18,7 +18,6 @@ export class TrailsComponent implements OnInit {
   public hikingUrl: string;
   private mapQuestUrl: string;
 
-
   constructor(private httpClient: HttpClient,
     private passer: PasserService,
     private afs: AngularFirestore,
@@ -30,15 +29,16 @@ export class TrailsComponent implements OnInit {
     this.afAuth.authState.subscribe(user => {
       this.user = user;
       this.userTrailsService.user = user;
-      // console.log(this.user);
       
       this.afs.collection('users').doc(this.user.uid).collection('completedTrails').valueChanges()
         .subscribe(data => {
-          this.userTrailsService.completedTrails = data
+          for (let i = 0; i < data.length; i++){
+          this.userTrailsService.completedTrails.push(data[i])}
         });
       this.afs.collection('users').doc(this.user.uid).collection('interestedTrails').valueChanges()
         .subscribe(data => {
-          this.userTrailsService.interestedTrails = data
+          for (let i = 0; i < data.length; i++){
+          this.userTrailsService.interestedTrails.push(data[i])}
         });
     });
 
@@ -56,10 +56,8 @@ export class TrailsComponent implements OnInit {
 
   getLngAndLat() {
     this.getLocationData().subscribe(data => {
-
       this.latLon = data;
       this.latLon = this.latLon.results[0].locations[0].latLng;
-      //console.log(this.latLon);
       this.updateHikingUrl();
     });
   }
@@ -78,7 +76,6 @@ export class TrailsComponent implements OnInit {
     this.getTrailsList().subscribe(data => {
       this.trailsList = data;
       this.trailsList = this.trailsList.trails;
-      //console.log(this.trailsList);
       this.passer.setTrails(this.trailsList);
     });
   }
