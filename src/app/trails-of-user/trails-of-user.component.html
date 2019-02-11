@@ -3,13 +3,13 @@
   <mat-card-title>{{user?.displayName}}</mat-card-title>
     <mat-card-header>Completed Trails:</mat-card-header>
       <ul class="completed" *ngFor="let ctrail of completedTrails">
-        <li routerLink="/trail-info">
+        <li (click)="routeToTrail(ctrail)">
           {{ ctrail.name }}
         </li>
       </ul>
     <mat-card-header>Interested Trails:</mat-card-header>
       <ul class="interested" *ngFor="let itrail of interestedTrails">
-        <li routerLink="/trail-info">
+        <li (click)="routeToTrail(itrail)">
           {{ itrail.name }}
         </li>
       </ul>
