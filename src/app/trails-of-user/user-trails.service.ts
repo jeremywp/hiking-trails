@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { DocumentData } from "@angular/fire/firestore";
+import { AngularFirestoreDocument, DocumentData } from "@angular/fire/firestore";
 import { AngularFirestore } from "angularfire2/firestore";
 import {User} from "../auth/user";
 import {AngularFireAuth} from "@angular/fire/auth";
+import {Trail} from "../trail";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserTrailsService {
+  private trailsInterestedRef: AngularFirestoreDocument<Trail>;
+  private trailsCompletedRef: AngularFirestoreDocument<Trail>;
+  private trailsCommentsRef: AngularFirestoreDocument<Trail>;
   public user;
   completedTrails: DocumentData[];
   interestedTrails: DocumentData[];
@@ -28,4 +32,12 @@ export class UserTrailsService {
         });
     });
   }
+
+  removecommentsTrail() {
+    return this.trailsCommentsRef.delete()
+      .then(_ => console.log('Success on remove'))
+      .catch(error => console.log('remove', error));
+
+  }
+
 }

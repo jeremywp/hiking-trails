@@ -22,6 +22,10 @@ mat-toolbar{
       margin-left: 20px;
   }
 
+  .avatar {
+      outline: none;
+  }
+
   .avatar{
       margin-left: 10px;
  }
@@ -29,5 +33,11 @@ mat-toolbar{
  @media only screen and (max-width: 600px) {
      .userName {
          display: none;
+     }
+     .title {
+         display:none;
+     }
+     .userTrail{
+         display:none;
      }
  }

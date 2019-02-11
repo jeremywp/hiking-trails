@@ -5,6 +5,4 @@ export interface User {
     displayName?: string;
     completedTrails?: Array<any>;
     interestedTrails?: Array<any>;
-
-
 }
