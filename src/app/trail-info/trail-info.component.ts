@@ -26,6 +26,8 @@ export class TrailInfoComponent implements OnInit {
   completed: boolean;
   interested: boolean;
   user;
+  stars: number;
+  comment: string;
   userCollectionRef;
   user$: Observable<User[]>;
 
@@ -50,7 +52,7 @@ export class TrailInfoComponent implements OnInit {
     await (this.interestedTrailsRef = this.afs.collection('users').doc(this.user.uid).collection('interestedTrails'));
     this.trails = this.passer.getTrails();
     this.trailIndex = this.passer.getTrailIndex();
-    this.apiGetter.getTrails().subscribe(res => {
+    await this.apiGetter.getTrails().subscribe(res => {
       this.apiGetter.getWeather(this.trails[this.trailIndex].latitude, this.trails[this.trailIndex].longitude).subscribe(res => {
         this.weathers = res;
         this.weathers = this.weathers.list;
@@ -59,6 +61,19 @@ export class TrailInfoComponent implements OnInit {
     });
     if (this.userTrailsService.completedTrails.find( _ => _.id == this.trails[this.trailIndex].id)){
       this.completed = true;
+    }
+    if (this.userTrailsService.interestedTrails.find( _ => _.id == this.trails[this.trailIndex].id)){
+      this.interested = true;
+    }
+    if (this.trails[this.trailIndex] == undefined ) {
+      this.comment = "";
+    } else {
+      this.comment = this.trails[this.trailIndex].comment;
+    }
+    if (this.trails[this.trailIndex].rating == undefined) {
+      this.stars = 0;
+    } else {
+      this.stars = this.trails[this.trailIndex].rating;
     }
     
   }
@@ -104,9 +119,17 @@ export class TrailInfoComponent implements OnInit {
     return string.replace(/([a-z](?=[A-Z]))/g, '$1 ').replace(/^./, function(str){ return str.toUpperCase(); });
   }
 
-  saveCompletedTrail (user, trail: Trail) {
+  saveCompletedTrail (user, trail) {
     // console.log('trail saved on component side');
-    this.userTrailsService.completedTrails.push(trail);
+    const currentTrail = this.userTrailsService.completedTrails.find(_ => _ === trail);
+    const trailIndex = this.userTrailsService.completedTrails.indexOf(trail);
+    if (!currentTrail) {
+      this.userTrailsService.completedTrails.push(trail);
+      //console.log(this.userTrailsService.completedTrails)
+    } else {
+      this.userTrailsService.completedTrails[trailIndex] = trail;
+      //console.log(this.userTrailsService.completedTrails)
+    }
     this.userCollectionRef.doc(user.uid).update({
       completedTrails: this.userTrailsService.completedTrails}, {merge:true});
   }
@@ -115,7 +138,7 @@ export class TrailInfoComponent implements OnInit {
     // console.log('trail saved on component side');
     this.userTrailsService.interestedTrails.push(trail);
     this.userCollectionRef.doc(user.uid).update({
-      interestedTrails: this.userTrailsService.interestedTrails});
+      interestedTrails: this.userTrailsService.interestedTrails}, {merge:true});
   }
 
   removeCompletedTrail(user, trail) {
@@ -130,5 +153,20 @@ export class TrailInfoComponent implements OnInit {
     this.userTrailsService.interestedTrails.splice(i,1);
     this.userCollectionRef.doc(user.uid).update({
       interestedTrails: this.userTrailsService.interestedTrails}, {merge:true});
+  }
+
+  rateTrail(star) {
+    this.stars = star;
+}
+
+  saveComment(user, trail:Trail) {
+    trail.comment = this.comment;
+    //console.log(trail.comment);
+    this.saveCompletedTrail(user ,trail);
+  }
+  saveStars(user, trail:Trail) {
+    trail.rating = this.stars;
+    //console.log(trail.rating);
+    this.saveCompletedTrail(user ,trail);
   }
 }

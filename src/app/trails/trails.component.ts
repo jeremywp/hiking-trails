@@ -34,11 +34,13 @@ export class TrailsComponent implements OnInit {
       
       this.afs.collection('users').doc(this.user.uid).collection('completedTrails').valueChanges()
         .subscribe(data => {
-          this.userTrailsService.completedTrails = data
+          for (let i = 0; i < data.length; i++){
+          this.userTrailsService.completedTrails.push(data[i])}
         });
       this.afs.collection('users').doc(this.user.uid).collection('interestedTrails').valueChanges()
         .subscribe(data => {
-          this.userTrailsService.interestedTrails = data
+          for (let i = 0; i < data.length; i++){
+          this.userTrailsService.interestedTrails.push(data[i])}
         });
     });
 

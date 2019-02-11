@@ -9,7 +9,7 @@
   <mat-card-content *ngIf="zipCode != undefined">
     <div fxLayout="row wrap" fxLayoutGap="30px">
       <div class="trail-detail-card" *ngFor="let trail of trailsList; let i = index" [id]="trail.id"
-           (click)="getTrailIndex(i)" routerLink="/trail-info">
+           (click)="getTrailIndex(i)" [routerLink]="['/trail-info', trail.id]">
             <div class="img-container">
               <img class='center' src="{{ trail.imgSmallMed }}">
             </div>
