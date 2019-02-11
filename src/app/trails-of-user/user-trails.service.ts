@@ -12,11 +12,9 @@ import {User} from "../auth/user";
 export class UserTrailsService {
   private trailsInterestedRef: AngularFirestoreDocument<Trail>;
   private trailsCompletedRef: AngularFirestoreDocument<Trail>;
-  private trailsCommentsRef: AngularFirestoreDocument<Trail>;
   public user;
   completedTrails = [];
   interestedTrails = [];
-  commentsTrails =[];
   userCollectionRef;
 
   constructor(private afs: AngularFirestore) {
@@ -35,11 +33,4 @@ export class UserTrailsService {
       .catch(error => console.log('remove', error));
   }
 
-  removecommentsTrail() {
-    return this.trailsCommentsRef.delete()
-      .then(_ => console.log('Success on remove'))
-      .catch(error => console.log('remove', error));
-
-  }
-  
 }
