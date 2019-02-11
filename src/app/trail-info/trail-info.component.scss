@@ -101,3 +101,23 @@ mat-checkbox {
     }
 }
 
+.user-comments {
+  width: 350px;
+  height: 200px;
+  resize:none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ratings {
+  background-color: #dadfea;
+  width: 356px;
+  height: 251px;
+}
+
+
