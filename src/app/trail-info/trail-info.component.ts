@@ -8,6 +8,7 @@ import { User } from '../auth/user';
 import { Observable } from "rxjs";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from '@angular/router';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-trail-info',
@@ -37,7 +38,8 @@ export class TrailInfoComponent implements OnInit {
     private passer: PasserService,
     private userTrailsService: UserTrailsService,
     private afs: AngularFirestore,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private toastr: ToastrService
   ) {
     this.userCollectionRef = this.afs.collection<User>('users');
     this.user$ = this.userCollectionRef.valueChanges();
@@ -176,5 +178,10 @@ export class TrailInfoComponent implements OnInit {
     trail.rating = this.stars;
     //console.log(trail.rating);
     this.saveCompletedTrail(user ,trail);
+    this.saveSuccessful()
+  }
+
+  saveSuccessful () {
+    this.toastr.success("Comment and rating saved successfully!")
   }
 }
