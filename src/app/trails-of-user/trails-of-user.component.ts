@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiGetterService } from '../api-getter.service';
-import {UserTrailsService} from "./user-trails.service";
 import { User } from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFirestore} from "@angular/fire/firestore";
@@ -21,9 +19,7 @@ export class TrailsOfUserComponent implements OnInit {
   user: User;
   user$;
 
-  constructor(private apiGetter: ApiGetterService,
-              private userTrailsService: UserTrailsService,
-              private router: Router,
+  constructor(private router: Router,
               private passer: PasserService,
               private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -33,10 +29,7 @@ export class TrailsOfUserComponent implements OnInit {
     this.user$ = this.trailInfoComponent.user$;
     this.afAuth.authState.subscribe(user => {
       this.user = user;
-      // console.log(this.user);
       this.afs.collection('users').doc(user.uid).ref.get().then(doc => {
-        // console.log(this.completedTrails);
-        // console.log(doc.data().completedTrails);
         this.completedTrails = doc.data().completedTrails;
         this.interestedTrails = doc.data().interestedTrails;
       });
@@ -50,5 +43,4 @@ export class TrailsOfUserComponent implements OnInit {
     this.passer.setTrailIndex(0);
     this.router.navigate(['/trail-info']);
   }
-
 }
