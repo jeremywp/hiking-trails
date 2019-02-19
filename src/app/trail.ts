@@ -22,10 +22,6 @@ export interface Trail {
   conditionStatus: string;
   conditionDetails: string;
   conditionDate: string;
-<<<<<<< HEAD
-  
-=======
   comment?: string;
   rating?: number;
->>>>>>> 720c77ef803c099e19ef2456849f63991862c091
 }
