@@ -67,10 +67,10 @@ export class TrailInfoComponent implements OnInit {
     if (this.userTrailsService.completedTrails.find(_ => _.id == this.trails[this.trailIndex].id)) {
       this.completed = true;
     }
-    if (this.userTrailsService.interestedTrails.find( _ => _.id == this.trails[this.trailIndex].id)){
+    if (this.userTrailsService.interestedTrails.find(_ => _.id == this.trails[this.trailIndex].id)) {
       this.interested = true;
     }
-    if (this.trails[this.trailIndex] == undefined ) {
+    if (this.trails[this.trailIndex] == undefined) {
       this.comment = "";
     } else {
       this.comment = this.trails[this.trailIndex].comment;
@@ -99,7 +99,7 @@ export class TrailInfoComponent implements OnInit {
     }
   }
 
-  completedFunc(user, trail:Trail) {
+  completedFunc(user, trail: Trail) {
     this.completed = !this.completed;
     if (this.completed == true) {
       this.saveCompletedTrail(user, trail)
@@ -109,7 +109,7 @@ export class TrailInfoComponent implements OnInit {
     }
   }
 
-  interestedFunc(user, trail:Trail) {
+  interestedFunc(user, trail: Trail) {
     this.interested = !this.interested;
     if (this.interested == true) {
       // console.log('interested');
@@ -125,7 +125,7 @@ export class TrailInfoComponent implements OnInit {
   }
 
 
-  saveCompletedTrail (user, trail) {
+  saveCompletedTrail(user, trail) {
     // console.log('trail saved on component side');
     const currentTrail = this.userTrailsService.completedTrails.find(_ => _ === trail);
     const trailIndex = this.userTrailsService.completedTrails.indexOf(trail);
@@ -144,7 +144,8 @@ export class TrailInfoComponent implements OnInit {
   saveInterestedTrail(user, trail: Trail) {
     this.userTrailsService.interestedTrails.push(trail);
     this.userCollectionRef.doc(user.uid).update({
-      interestedTrails: this.userTrailsService.interestedTrails}, {merge:true});
+      interestedTrails: this.userTrailsService.interestedTrails
+    }, { merge: true });
   }
 
   removeCompletedTrail(user, trail) {
@@ -165,16 +166,17 @@ export class TrailInfoComponent implements OnInit {
 
   rateTrail(star) {
     this.stars = star;
-}
+  }
 
-  saveComment(user, trail:Trail) {
+  saveComment(user, trail: Trail) {
     trail.comment = this.comment;
     //console.log(trail.comment);
-    this.saveCompletedTrail(user ,trail);
+    this.saveCompletedTrail(user, trail);
   }
-  saveStars(user, trail:Trail) {
+  saveStars(user, trail: Trail) {
     trail.rating = this.stars;
     //console.log(trail.rating);
-    this.saveCompletedTrail(user ,trail);
+    this.saveCompletedTrail(user, trail);
   }
 }
+      
