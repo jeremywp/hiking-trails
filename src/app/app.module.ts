@@ -30,6 +30,7 @@ import { AuthModule } from './auth/auth.module';
 import * as firebase from 'firebase';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { CommentsComponent } from './comments/comments.component';
+import {ToastrModule} from "ngx-toastr";
 
 
 @NgModule({
@@ -42,6 +43,8 @@ import { CommentsComponent } from './comments/comments.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,

@@ -11,10 +11,14 @@ import {Trail} from "../trail";
 export class UserTrailsService {
   private trailsInterestedRef: AngularFirestoreDocument<Trail>;
   private trailsCompletedRef: AngularFirestoreDocument<Trail>;
-  private trailsCommentsRef: AngularFirestoreDocument<Trail>;
   public user;
+<<<<<<< HEAD
+  completedTrails = [];
+  interestedTrails = [];
+=======
   completedTrails: DocumentData[];
   interestedTrails: DocumentData[];
+>>>>>>> 720c77ef803c099e19ef2456849f63991862c091
   userCollectionRef;
 
   constructor(private afs: AngularFirestore,
@@ -33,6 +37,8 @@ export class UserTrailsService {
     });
   }
 
+<<<<<<< HEAD
+=======
   removecommentsTrail() {
     return this.trailsCommentsRef.delete()
       .then(_ => console.log('Success on remove'))
@@ -40,4 +46,5 @@ export class UserTrailsService {
 
   }
 
+>>>>>>> 720c77ef803c099e19ef2456849f63991862c091
 }
