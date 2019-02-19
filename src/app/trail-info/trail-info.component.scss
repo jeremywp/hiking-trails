@@ -61,6 +61,28 @@ mat-checkbox {
     display: flex;
 }
 
+.user-comments {
+    width: 350px;
+    height: 200px;
+    resize:none;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .ratings {
+    background-color: #dadfea;
+    width: 356px;
+    height: 251px;
+  }
+  
+  
+  
+
 @media only screen and (max-width: 900px) {
     .weather {
       flex-direction: row;
@@ -99,25 +121,12 @@ mat-checkbox {
             margin-right: 1.5em;
         }
     }
+
+    .user-comments {
+        width: 83vw;
+    }
+
+    .ratings {
+        width: 85vw;
+    }
 }
-
-.user-comments {
-  width: 350px;
-  height: 200px;
-  resize:none;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.ratings {
-  background-color: #dadfea;
-  width: 356px;
-  height: 251px;
-}
-
-
