@@ -7,37 +7,39 @@ mat-toolbar{
     /* This fills the remaining space, by using flexbox. 
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
-  }
+}
 
-  .loginInfo{
-      display: flex;
+.loginInfo{
+    display: flex;
       
-  }
+}
   
- .logoutButton{
-      margin-left: 20px;
-  }
+.logoutButton{
+    margin-left: 20px;
+}
 
-  .myTrailsButton{
-      margin-left: 20px;
-  }
+.myTrailsButton{
+    margin-left: 20px;
+}
 
-  .avatar {
-      outline: none;
-  }
+.avatar {
+    outline: none;
+}
 
-  .avatar{
-      margin-left: 10px;
- }
+.avatar{
+    margin-left: 10px;
+}
 
- @media only screen and (max-width: 600px) {
-     .userName {
-         display: none;
-     }
-     .title {
-         display:none;
-     }
-     .userTrail{
-         display:none;
-     }
+@media only screen and (max-width: 600px) {
+    .userName {
+        display: none;
+    }
+    
+    .title {
+        display:none;
+    }
+
+    .userTrail{
+        display:none;
+    }
  }
