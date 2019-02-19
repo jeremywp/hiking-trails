@@ -46,7 +46,7 @@ export class TrailsComponent implements OnInit {
 
 
   updateMapUrl() {
-    this.mapQuestUrl = 'http://open.mapquestapi.com/geocoding/v1/address?key=z09V87z5rXEly0yFADXnEMWFbNvH3Bsd&location=' + this.zipCode;
+    this.mapQuestUrl = 'https://open.mapquestapi.com/geocoding/v1/address?key=z09V87z5rXEly0yFADXnEMWFbNvH3Bsd&location=' + this.zipCode;
     this.getLngAndLat();
   }
 
